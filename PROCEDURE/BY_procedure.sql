@@ -20,6 +20,11 @@ END;
 //
 DELIMITER ;
 
+
+-----------------------------------------
+
+
+
 -- 프로젝트등록
 DELIMITER //
 CREATE PROCEDURE RegisterProject(
@@ -77,3 +82,94 @@ BEGIN
 END;
 //
 DELIMITER ;
+
+-----------------------------------------
+
+-- 휴가관리 
+-- 직원은 자신의 휴가 신청 내역을 조회할 수 있다.
+DELIMITER //
+CREATE PROCEDURE GetEmployeeHolidays(
+    IN emp_id INT
+)
+BEGIN
+    SELECT * 
+    FROM Holidays 
+    WHERE EmployeeID = emp_id;
+END;
+//
+DELIMITER ;
+--
+Answer
+CALL GetEmployeeHolidays(1);
+
+
+--휴가관리 신청
+
+DELIMITER //
+CREATE PROCEDURE InsertHoliday(
+    IN emp_id INT,
+    IN holiday_type VARCHAR(255),
+    IN start_date DATE,
+    IN end_date DATE,
+    IN remaining_days INT,
+    IN approval_status ENUM('승인', '대기')
+)
+BEGIN
+    INSERT INTO Holidays (EmployeeID, HolidayType, StartDate, EndDate, RemainingDays, ApprovalStatus)
+    VALUES (emp_id, holiday_type, start_date, end_date, remaining_days, approval_status);
+END;
+//
+DELIMITER ;
+--
+ANSWER
+CALL InsertHoliday(1, '연차', '2023-12-25', '2023-12-26', 8, '승인');
+
+
+-- 관리자는 직원의 휴가 신청을 승인 또는 반려할 수 있다.
+
+DELIMITER //
+
+CREATE PROCEDURE UpdateHolidayApproval(
+    IN holiday_id INT,
+    IN approval_status ENUM('승인', '대기')
+)
+BEGIN
+    UPDATE Holidays
+    SET ApprovalStatus = approval_status
+    WHERE HolidayID = holiday_id;
+
+IF approval_status = '승인' THEN
+        UPDATE Employees e
+        JOIN Holidays h ON e.EmployeeID = h.EmployeeID
+        SET h.RemainingDays = h.RemainingDays - DATEDIFF(h.EndDate, h.StartDate) + 1
+        WHERE h.HolidayID = holiday_id;
+    END IF;
+END;
+//
+
+DELIMITER ;
+
+--
+ANSWER
+CALL UpdateHolidayApproval(1, '승인');
+
+--
+
+--관리자는 직원의 잔여 휴가 정보를 조회할 수 있다.
+
+DELIMITER //
+CREATE PROCEDURE GetRemainHolidays(
+    IN emp_id INT
+)
+BEGIN
+    SELECT EmployeeID, RemainingDays
+    FROM Holidays
+    WHERE EmployeeID = emp_id;
+END;
+//
+DELIMITER ;
+
+--
+
+ANSWER
+CALL GetRemainingHolidays(1);
