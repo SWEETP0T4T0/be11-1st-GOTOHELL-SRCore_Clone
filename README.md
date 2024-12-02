@@ -351,7 +351,7 @@ DELIMITER ;
 
 ```sql
 DELIMITER //
-CREATE PROCEDURE 부서인원조회3(in inid int)
+CREATE PROCEDURE 부서인원조회(in inid int)
 begin
     select e.detailid 부서인원조회 from employee e
     inner join department d
@@ -367,11 +367,17 @@ DELIMITER ;
 
 
 <details>
-<summary><b>부서삭제</b></summary>
+<summary><b>직책등록</b></summary>
 <div markdown="1">
 
 ```sql
-
+DELIMITER //
+CREATE PROCEDURE 직책등록(in po_name_input varchar(255))
+begin
+	INSERT INTO position (positionname) VALUES (po_name_input);
+end;
+//
+DELIMITER ;
 ```
 
 </div>
@@ -379,11 +385,17 @@ DELIMITER ;
 
 
 <details>
-<summary><b>부서삭제</b></summary>
+<summary><b>직책수정</b></summary>
 <div markdown="1">
 
 ```sql
-
+DELIMITER //
+CREATE PROCEDURE 직책수정(in inid int, in po_name_input varchar(255))
+begin
+    update position set positionName=po_name_input where positionId=inid;
+end;
+//
+DELIMITER ;
 ```
 
 </div>
@@ -391,11 +403,17 @@ DELIMITER ;
 
 
 <details>
-<summary><b>부서삭제</b></summary>
+<summary><b>직책삭제</b></summary>
 <div markdown="1">
 
 ```sql
-
+DELIMITER //
+CREATE PROCEDURE 직책삭제(in inid int)
+begin
+    delete from position where positionId=inid;
+end;
+//
+DELIMITER ;
 ```
 
 </div>
