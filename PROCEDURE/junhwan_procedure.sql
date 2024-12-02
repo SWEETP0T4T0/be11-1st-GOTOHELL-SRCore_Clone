@@ -1,3 +1,4 @@
+-- 직원 기본 정보 등록
 DELIMITER //
 create procedure 직원정보등록(in inNAME varchar(255), in inAGE int(11), in inADDRESS varchar(255), in inRESIDENT_NUMBER varchar(14), 
 in inMARITALSTATUS enum('기혼', '미혼'), in inEDUCATION varchar(255), in inSALARY DECIMAL(10, 2), in inSTARTDATE datetime)
@@ -42,6 +43,7 @@ begin
 end
 // DELIMITER ;
 
+-- 직원 상세 정보 조회
 DELIMITER //
 create procedure 직원상세정보조회(in inid int(11))
 begin
@@ -51,6 +53,7 @@ begin
 end
 // DELIMITER ;
 
+-- 퇴사자 정보 등록
 DELIMITER //
 create procedure 퇴사자정보등록(in inid int(11))
 begin
@@ -58,6 +61,7 @@ begin
 end
 // DELIMITER ;
 
+-- 재직자/톼사자 현황 조회
 DELIMITER //
 create procedure 입퇴사자현황조회()
 begin
@@ -65,6 +69,7 @@ begin
 end
 // DELIMITER ;
 
+-- 출퇴근 시간 기록
 DELIMITER //
 create procedure 근태기록(in inid int(11), in inCheckIn datetime, in inCheckOut datetime)
 begin
@@ -73,6 +78,7 @@ VALUES (inid, inCheckIn, inCheckOut);
 end
 // DELIMITER ;
 
+-- 근태 조회
 DELIMITER //
 create procedure 근태조회(in inid int(11), in instartdate datetime, in infinishdate datetime)
 begin
@@ -81,6 +87,7 @@ begin
 end
 // DELIMITER ;
 
+-- 교육 과정 등록
 DELIMITER //
 create procedure 교육과정등록(in inemployeeid int(11), in inCoursename varchar(255), in instartdate date, in inenddate date)
 begin
@@ -89,6 +96,7 @@ begin
 end
 // DELIMITER ;
 
+-- 교육 과정 수정
 DELIMITER //
 create procedure 교육과정수정(in inemployeeid int(11), in ineducationid int(11), in inCoursename varchar(255), 
 in instartdate date, in inenddate date)
@@ -99,6 +107,7 @@ begin
 end
 // DELIMITER ;
 
+-- 교육 과정 조회
 DELIMITER //
 create procedure 교육과정조회(in inemployeeid int(11))
 begin

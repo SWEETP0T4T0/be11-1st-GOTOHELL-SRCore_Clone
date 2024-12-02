@@ -173,3 +173,119 @@ DELIMITER ;
 
 ANSWER
 CALL GetRemainingHolidays(1);
+
+-- 직원 가족관계
+-- 1.가족 관계 등록 프로시저
+DELIMITER //
+CREATE PROCEDURE RegisterFamily(
+    IN p_DetailID INT,
+    IN p_Relationship VARCHAR(255),
+    IN p_FamilyMemberName VARCHAR(255),
+    IN p_BirthDate DATE,
+    IN p_ContactNumber VARCHAR(15)
+)
+BEGIN
+    INSERT INTO Families (DetailID, Relationship, FamilyMemberName, BirthDate, ContactNumber)
+    VALUES (p_DetailID, p_Relationship, p_FamilyMemberName, p_BirthDate, p_ContactNumber);
+END;
+//
+DELIMITER ;
+
+answer
+CALL RegisterFamily(1, '배우자', '김영희', '1990-05-20', '010-1234-5678');
+CALL RegisterFamily(2, '자녀', '홍길순', '2015-06-10', '010-5678-1234');
+CALL RegisterFamily(3, '부모님', '박철수', '1965-12-01', '010-4567-8901');
+
+-- 2.가족 정보 수정 프로시저
+DELIMITER //
+CREATE PROCEDURE UpdateFamily(
+    IN p_FamilyID INT,
+    IN p_FamilyMemberName VARCHAR(255),
+    IN p_ContactNumber VARCHAR(15)
+)
+BEGIN
+    UPDATE Families
+    SET FamilyMemberName = p_FamilyMemberName, ContactNumber = p_ContactNumber
+    WHERE FamilyID = p_FamilyID;
+END;
+//
+DELIMITER ;
+
+answer
+CALL UpdateFamily(1, '김영희', '010-9876-5432');
+CALL UpdateFamily(2, '홍길순', '010-3456-7890');
+
+
+-- 3.특정 직원의 가족 관계 조회 프로시저
+DELIMITER //
+CREATE PROCEDURE GetEmployeeFamily(
+    IN p_DetailID INT
+)
+BEGIN
+    SELECT * FROM Families WHERE DetailID = p_DetailID;
+END;
+//
+DELIMITER ;
+
+answer
+CALL GetEmployeeFamily(1);
+CALL GetEmployeeFamily(2);
+
+
+-- 4.직원 자신의 가족 정보 조회 프로시저
+
+DELIMITER //
+CREATE PROCEDURE GetOwnFamily(
+    IN p_DetailID INT
+)
+BEGIN
+    SELECT FamilyMemberName, Relationship, BirthDate
+    FROM Families
+    WHERE DetailID = p_DetailID;
+END;
+//
+DELIMITER ;
+
+
+answer
+CALL GetOwnFamily(1);
+CALL GetOwnFamily(3);
+
+
+-- 파견이력
+
+-- 1. 파견 이력 등록 프로시저
+DELIMITER //
+
+CREATE PROCEDURE RegisterDispatchAndUpdateProjectWithBonus (
+    IN emp_id INT,
+    IN dispatch_start DATE,
+    IN dispatch_end DATE,
+    IN dispatch_role VARCHAR(255),
+    IN dispatch_salary DECIMAL(10, 2),
+    IN project_name VARCHAR(255),
+    IN project_start DATE,
+    IN project_end DATE,
+    IN responsibility VARCHAR(255),
+    IN role VARCHAR(255),
+    IN project_salary DECIMAL(10, 2)
+)
+BEGIN
+    -- 1. DispatchDetails 테이블에 삽입
+    INSERT INTO DispatchDetails (EmployeeID, DispatchStartDate, DispatchEndDate, DispatchRole, Salary)
+    VALUES (emp_id, dispatch_start, dispatch_end, dispatch_role, dispatch_salary);
+
+    -- 2. Payments 테이블에 보너스 업데이트
+    UPDATE Payments
+    SET Bonus = Bonus + dispatch_salary
+    WHERE EmployeeID = emp_id;
+
+    -- 3. Projects 테이블에 삽입 또는 업데이트
+    INSERT INTO Projects (EmployeeID, ProjectName, StartDate, EndDate, Responsibility, Role, Salary)
+    VALUES (emp_id, project_name, project_start, project_end, responsibility, role, project_salary)
+    ON DUPLICATE KEY UPDATE
+        StartDate = VALUES(StartDate),
+        EndDate = VALUES(EndDate),
+        Responsibility = VALUES(Responsibility),
+        Role = VALUES(Role),
+        Salary = VALUES(Salary);
