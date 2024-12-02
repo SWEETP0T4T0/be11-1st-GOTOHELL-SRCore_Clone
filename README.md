@@ -104,13 +104,20 @@ Moosic은 총 15개의 테이블로 구성되어 있습니다.
   
 자세한 내용은 [여기](https://github.com/beyond-sw-camp/be07_1st_1team_Moosic/blob/main/schema/team1_moosic_schema.sql)에서 보실 수 있습니다.
   
-### 1. 근태기록
+### 1. 직원상세정보
 ```sql
-CREATE TABLE `Attendence` (
-	`AttendenceId`	int	NOT NULL primary key	auto_increment,
-	`직원ID`	int	NOT NULL,
-	`Check_in`	datetime	NULL,
-	`Check_out`	datetime	NULL
+CREATE TABLE `EmployeeDetail` (
+	`DetaiID`	int	NOT NULL primary key auto_increment,
+	`name`	Varchar(255)	NOT NULL,
+	`age`	int	NOT NULL,
+	`Address`	varchar(255)	NOT NULL,
+	`Resident_number`	varchar(13)	NOT NULL,
+	`Marry`	Enum ('기혼', '미혼') NOT NULL,
+	`Family`	varchar(255)	NOT NULL,
+	`Education`	varchar(255)	NOT NULL,
+	`Payroll`	varchar(255)	NOT NULL,
+	`Start_date`	datetime	NOT NULL,
+	`NowStatus`	Enum ('Y', 'N') NOT NULL default 'Y' 
 );
 ```
 
