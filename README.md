@@ -176,7 +176,7 @@ CREATE TABLE `Employee` (
 
 
 <details>
-<summary><b>4. 직원</b></summary>
+<summary><b>5. 자격증</b></summary>
 <div markdown="1"> 
   
 ```sql
@@ -193,19 +193,16 @@ CREATE TABLE `Qualification` (
 
 
 
-  
-### 6. 
+<details>
+<summary><b>1. 제목</b></summary>
+<div markdown="1">   
+
 ```sql
-CREATE TABLE `DIspatchDetail` (
-	`파견이력ID`	int	NOT NULL primary key	auto_increment,
-	`EmployeeId`	int	NOT NULL,
-	`Name`	varchar(255)	NOT NULL,
-	`StartDate`	datetime	NOT NULL,
-	`EndDate`	datetime	NULL,
-	`Payroll`	varchar(255)	NOT NULL,
-	`Work`	varchar(255)	NOT NULL
-);
+
 ```
+</div>
+</details>
+
 
   
 ### 7. 
