@@ -401,7 +401,7 @@ DELIMITER ;
 DELIMITER //
 CREATE PROCEDURE 직책등록(in po_name_input varchar(255))
 begin
-	INSERT INTO position (positionname) VALUES (po_name_input);
+	INSERT INTO positions (positionname) VALUES (po_name_input);
 end;
 //
 DELIMITER ;
@@ -419,7 +419,7 @@ DELIMITER ;
 DELIMITER //
 CREATE PROCEDURE 직책수정(in inid int, in po_name_input varchar(255))
 begin
-    update position set positionName=po_name_input where positionId=inid;
+    update positions set positionName=po_name_input where positionId=inid;
 end;
 //
 DELIMITER ;
@@ -437,7 +437,7 @@ DELIMITER ;
 DELIMITER //
 CREATE PROCEDURE 직책삭제(in inid int)
 begin
-    delete from position where positionId=inid;
+    delete from positions where positionId=inid;
 end;
 //
 DELIMITER ;
@@ -453,10 +453,10 @@ DELIMITER ;
 
 ```sql
 DELIMITER //
-CREATE PROCEDURE 급여등록(in em_id int, in pre_pay int, in ths_pay int, in pre_bo int)
+CREATE PROCEDURE 급여등록(in em_id int, in pre_pay int, in cur_pay int, in pre_bo int)
 begin
-	INSERT INTO Payment (직원ID, previous_pay, thisyear_pay, Previous_bonus)
-VALUES (em_id, pre_pay ,ths_pay, pre_bo);
+	INSERT INTO Payments (EmployeeID, PreviousSalary, CurrentSalary, Bonus)
+VALUES (em_id, pre_pay ,cur_pay, pre_bo);
 end;
 //
 DELIMITER ;
@@ -472,9 +472,9 @@ DELIMITER ;
 
 ```sql
 DELIMITER //
-CREATE PROCEDURE 급여수정(in em_id int, in pre_pay int, in ths_pay int, in pre_bo int)
+CREATE PROCEDURE 급여수정(in em_id int, in pre_pay int, in cur_pay int, in pre_bo int)
 begin
-    update payment set 직원ID = em_id, previous_pay = pre_pay, thisyear_pay = ths_pay, Previous_bonus = pre_bo where 직원id = em_id;
+    update payments set EmpoyeeID = em_id, PreviousSalary = pre_pay, CurrentSalary = cur_pay, Bonus = pre_bo where 직원id = em_id;
 end;
 //
 DELIMITER ;
@@ -492,8 +492,8 @@ DELIMITER ;
 DELIMITER //
 CREATE PROCEDURE 급여조회(in inid int)
 begin
-    select 직원ID, previous_pay, thisyear_pay, Previous_bonus from payment
-    where 직원id = inid;
+    select EmployeeID, PreviousSalary, CurrentSalary, bonus from payments
+    where EmployeeID = inid;
 end;
 //
 DELIMITER ;
