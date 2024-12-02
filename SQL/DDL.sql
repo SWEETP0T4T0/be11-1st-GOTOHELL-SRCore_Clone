@@ -1,7 +1,3 @@
-drop database test;
-create database test;
-use test;
-
 CREATE TABLE EmployeeDetails (
     DetailID INT PRIMARY KEY AUTO_INCREMENT,
     Name VARCHAR(255) NOT NULL,
