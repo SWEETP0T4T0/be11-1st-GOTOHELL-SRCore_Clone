@@ -508,6 +508,7 @@ DELIMITER ;
 <div markdown="1">
 	
 관리자는 직원에게 보너스를 지급할 수 있다.
+
 ```sql
 DELIMITER //
 CREATE PROCEDURE UpdateEmployeeBonus(IN em_id INT, IN new_bonus DECIMAL(10, 2))
@@ -529,6 +530,7 @@ DELIMITER ;
 <div markdown="1">
 	
 관리자는 보너스 지급 내역을 조회할 수 있다.
+
 ```sql
 DELIMITER //
 CREATE PROCEDURE GetBonusDetails(IN min_bonus DECIMAL(10, 2))
@@ -550,6 +552,7 @@ DELIMITER ;
 <div markdown="1">
 	
 관리자는 프로젝트를 등록할 수 있다.
+
 ```sql
 DELIMITER //
 CREATE PROCEDURE RegisterProject(
@@ -578,6 +581,7 @@ DELIMITER ;
 <div markdown="1">
 	
 관리자는 프로젝트 정보를 수정할 수 있다.
+
 ```sql
 DELIMITER //
 CREATE PROCEDURE UpdateProjectName(
@@ -602,6 +606,7 @@ DELIMITER ;
 <div markdown="1">
 	
  관리자는 프로젝트에 참여 중인 직원 목록을 조회할 수 있다.
+ 
 ```sql
 DELIMITER //
 CREATE PROCEDURE GetProjectParticipants(
@@ -625,6 +630,7 @@ DELIMITER ;
 <div markdown="1">
 	
 직원은 자신이 참여 중인 프로젝트 목록을 조회할 수 있다.
+
 ```sql
 DELIMITER //
 CREATE PROCEDURE GetEmployeeProjects(
@@ -635,6 +641,64 @@ BEGIN
     FROM Projects 
     WHERE EmployeeID = emp_id;
 END;
+//
+DELIMITER ;
+```
+
+</div>
+</details>
+
+
+<details>
+<summary><b>인사평가등록</b></summary>
+<div markdown="1">
+
+```sql
+DELIMITER //
+CREATE PROCEDURE 인사평가등록(in em_id int, in ev_name varchar(255), in score int, in ev_reason varchar(255))
+begin
+	INSERT INTO scores (EmployeeID, EvaluationName, ScoreValue, EvaluationReason)
+VALUES (em_id, ev_name , score, ev_reason);
+end;
+//
+DELIMITER ;
+```
+
+</div>
+</details>
+
+
+<details>
+<summary><b>인사평가수정</b></summary>
+<div markdown="1">
+
+```sql
+DELIMITER //
+CREATE PROCEDURE 인사평가수정(in em_id int, in ev_name varchar(255), in score int, in ev_reason varchar(255))
+begin
+    update scores set EvaluationName = ev_name,
+    ScoreValue = score, EvaluationReason = ev_reason
+    where EmployeeID = em_id;
+end;
+//
+DELIMITER ;
+```
+
+</div>
+</details>
+
+
+<details>
+<summary><b>인사평가조회</b></summary>
+<div markdown="1">
+
+```sql
+DELIMITER //
+CREATE PROCEDURE 인사평가조회(in em_id int)
+begin
+    select * from Scores
+    where EmployeeID = em_id;
+end;
 //
 DELIMITER ;
 ```
@@ -667,17 +731,6 @@ DELIMITER ;
 </details>
 
 
-<details>
-<summary><b>제목</b></summary>
-<div markdown="1">
-
-```sql
-
-```
-
-</div>
-</details>
-
 
 <details>
 <summary><b>제목</b></summary>
@@ -691,6 +744,7 @@ DELIMITER ;
 </details>
 
 
+
 <details>
 <summary><b>제목</b></summary>
 <div markdown="1">
@@ -702,4 +756,55 @@ DELIMITER ;
 </div>
 </details>
 
+
+
+<details>
+<summary><b>제목</b></summary>
+<div markdown="1">
+
+```sql
+
+```
+
+</div>
+</details>
+
+
+
+<details>
+<summary><b>제목</b></summary>
+<div markdown="1">
+
+```sql
+
+```
+
+</div>
+</details>
+
+
+
+<details>
+<summary><b>제목</b></summary>
+<div markdown="1">
+
+```sql
+
+```
+
+</div>
+</details>
+
+
+
+<details>
+<summary><b>제목</b></summary>
+<div markdown="1">
+
+```sql
+
+```
+
+</div>
+</details>
 
