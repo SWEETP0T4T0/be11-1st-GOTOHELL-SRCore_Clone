@@ -103,7 +103,12 @@
 Moosic은 총 15개의 테이블로 구성되어 있습니다.
   
 자세한 내용은 [여기](https://github.com/beyond-sw-camp/be07_1st_1team_Moosic/blob/main/schema/team1_moosic_schema.sql)에서 보실 수 있습니다.
-  
+
+
+<details>
+<summary><b>부서등록</b></summary>
+<div markdown="1">  
+	
 ### 1. 직원상세정보
 ```sql
 CREATE TABLE `EmployeeDetail` (
@@ -119,7 +124,8 @@ CREATE TABLE `EmployeeDetail` (
 	`NowStatus`	Enum ('Y', 'N') NOT NULL default 'Y' 
 );
 ```
-
+</div>
+</details>
   
 ### 2. 부서
 ```sql
