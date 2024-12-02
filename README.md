@@ -104,76 +104,97 @@ Moosic은 총 15개의 테이블로 구성되어 있습니다.
   
 자세한 내용은 [여기](https://github.com/beyond-sw-camp/be07_1st_1team_Moosic/blob/main/schema/team1_moosic_schema.sql)에서 보실 수 있습니다.
   
-### 1. 음원
+### 1. 근태기록
 ```sql
-CREATE TABLE `music` (
-`music_id`	bigint PRIMARY KEY AUTO_INCREMENT,
-`music_title`	varchar(255) NOT NULL,
-`lyrics`	varchar(10000),
-`music_file_url`	varchar(2083) NOT NULL,
-`playtime`	int unsigned NOT NULL,
-`like_count`	bigint	NOT NULL	DEFAULT 0,
-`del_yn`	tinyint(1)	NOT NULL	DEFAULT 0,
-`album_id`	bigint	NOT NULL,
-`genre`    enum('k-pop', 'pop', 'j-pop', 'dance', 'ballad', 'hip-hop', 'trot')    NOT NULL,
-FOREIGN KEY music(album_id) REFERENCES album(album_id) ON DELETE CASCADE ON UPDATE CASCADE
+CREATE TABLE `Attendence` (
+	`AttendenceId`	int	NOT NULL primary key	auto_increment,
+	`직원ID`	int	NOT NULL,
+	`Check_in`	datetime	NULL,
+	`Check_out`	datetime	NULL
 );
 ```
 
   
-### 2. 앨범
+### 2. 
+```sql
 
-
-  
-### 3. 플레이리스트
-
+```
 
   
-### 4. 플레이리스트 세부 내역
+### 3. 
+```sql
 
-
-  
-### 5. 음원 재생 이력
-
+```
 
   
-### 6. 좋아요
+### 4. 
+```sql
 
-
-  
-### 7. 싫어요
-
+```
 
   
-### 8. 관리자
+### 5. 
+```sql
 
-
-  
-### 9. 배급사
-
-
-### 10. 회원
-
-
+```
 
   
-### 11. 아티스트
+### 6. 
+```sql
 
-
-  
-### 12. 결제 수단
-
+```
 
   
-### 13. 결제 이력
+### 7. 
+```sql
+
+```
 
   
+### 8. 
+```sql
 
-### 14. 음원에 참여한 아티스트
+```
 
+  
+### 9. 
+```sql
 
-### 15. 인기 차트
+```
 
+### 10. 
+```sql
+
+```
+
+  
+### 11. 
+```sql
+
+```
+
+  
+### 12. 
+```sql
+
+```
+
+  
+### 13. 
+```sql
+
+```
+  
+
+### 14. 
+```sql
+
+```
+
+### 15. 
+```sql
+
+```
 
 ---
 
