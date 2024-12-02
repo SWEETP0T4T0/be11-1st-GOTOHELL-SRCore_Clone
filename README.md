@@ -327,7 +327,7 @@ CREATE TABLE `Qualification` (
 DELIMITER //
 CREATE PROCEDURE 부서등록(in dp_name_input varchar(255))
 begin
-	INSERT INTO department (DepartmentName) VALUES (dp_name_input);
+	INSERT INTO Departments (DepartmentName) VALUES (dp_name_input);
 end;
 //
 DELIMITER ;
@@ -345,7 +345,7 @@ DELIMITER ;
 DELIMITER //
 CREATE PROCEDURE 부서수정(in inid int, in dp_name_input varchar(255))
 begin
-    update department set DepartmentName=dp_name_input where DepartmentId=inid;
+    update Departments set DepartmentName=dp_name_input where DepartmentId=inid;
 end;
 //
 DELIMITER ;
@@ -363,7 +363,7 @@ DELIMITER ;
 DELIMITER //
 CREATE PROCEDURE 부서삭제(in inid int)
 begin
-    delete from department where DepartmentId=inid;
+    delete from Departments where DepartmentId=inid;
 end;
 //
 DELIMITER ;
@@ -380,10 +380,10 @@ DELIMITER ;
 DELIMITER //
 CREATE PROCEDURE 부서인원조회(in inid int)
 begin
-    select e.detailid 부서인원조회 from employee e
-    inner join department d
-    on e.departmentid = d.departmentid
-    where d.departmentid = inid;
+    select e.DetailID 부서인원조회 from employees e
+    inner join Departments d
+    on e.DepartmentID = d.DepartmentID
+    where d.DepartmentID = inid;
 end;
 //
 DELIMITER ;
