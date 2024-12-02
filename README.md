@@ -106,10 +106,9 @@ Moosic은 총 15개의 테이블로 구성되어 있습니다.
 
 
 <details>
-<summary><b>부서등록</b></summary>
+<summary><b>직원상세정보</b></summary>
 <div markdown="1">  
 	
-### 1. 직원상세정보
 ```sql
 CREATE TABLE `EmployeeDetail` (
 	`DetaiID`	int	NOT NULL primary key auto_increment,
