@@ -317,14 +317,6 @@ CREATE TABLE `Qualification` (
 ---
 
 # ✨ 프로시저
-
-<details>
-<summary><b>부서관리</b></summary>
-<div markdown="1">
-
-
-
-
  
 <details>
 <summary><b>부서등록</b></summary>
@@ -347,7 +339,6 @@ DELIMITER ;
 <summary><b>부서수정</b></summary>
 <div markdown="2">
 
-
 ```sql
 DELIMITER //
 CREATE PROCEDURE 부서수정(in inid int, in dp_name_input varchar(255))
@@ -360,11 +351,6 @@ DELIMITER ;
 	
 </div>
 </details>
-
-</div>
-</details>
-
-
 
 
 <details>
