@@ -113,7 +113,6 @@ CREATE TABLE `EmployeeDetail` (
 	`Address`	varchar(255)	NOT NULL,
 	`Resident_number`	varchar(13)	NOT NULL,
 	`Marry`	Enum ('기혼', '미혼') NOT NULL,
-	`Family`	varchar(255)	NOT NULL,
 	`Education`	varchar(255)	NOT NULL,
 	`Payroll`	varchar(255)	NOT NULL,
 	`Start_date`	datetime	NOT NULL,
@@ -122,68 +121,141 @@ CREATE TABLE `EmployeeDetail` (
 ```
 
   
-### 2. 
+### 2. 부서
 ```sql
-
+CREATE TABLE `Department` (
+	`DepartmentId`	int	NOT NULL	primary key	auto_increment,
+	`DepartmentName`	varchar(255)	NOT NULL,
+	`DepartmentChange`	varchar(255)	NOT NULL	DEFAULT '없음'
+);
 ```
 
   
-### 3. 
+### 3. 직급
 ```sql
-
+CREATE TABLE `Position` (
+	`PositionID`	int	NOT NULL	primary key	auto_increment,
+	`PositionName`	int	NOT NULL,
+	`PositionChange`	varchar(255)	NOT NULL	DEFAULT '없음'
+);
 ```
 
   
-### 4. 
+### 4. 직원
 ```sql
-
+CREATE TABLE `Employee` (
+	`EmployeeId`	int	NOT NULL primary key	auto_increment,
+	`DetailID`	int	NOT NULL,
+	`DepartmentID`	int	NOT NULL,
+	`Position`	int	NOT NULL,
+	`Name`	varchar(255)	NOT NULL,
+	`Type`	varchar(255)	NOT NULL
+);
 ```
 
   
 ### 5. 
 ```sql
-
+CREATE TABLE `Qualification` (
+	`QualificationsID`	int	NOT NULL primary key	auto_increment,
+	`DetaiID`	int	NOT NULL,
+	`QualificationsName`	varchar(255)	NOT NULL,
+	`issu_date`	datetime	NOT NULL,
+	`expire_date`	datetime	NULL
+);
 ```
 
   
 ### 6. 
 ```sql
-
+CREATE TABLE `DIspatchDetail` (
+	`파견이력ID`	int	NOT NULL primary key	auto_increment,
+	`EmployeeId`	int	NOT NULL,
+	`Name`	varchar(255)	NOT NULL,
+	`StartDate`	datetime	NOT NULL,
+	`EndDate`	datetime	NULL,
+	`Payroll`	varchar(255)	NOT NULL,
+	`Work`	varchar(255)	NOT NULL
+);
 ```
 
   
 ### 7. 
 ```sql
-
+CREATE TABLE `Attendence` (
+	`AttendenceId`	int	NOT NULL primary key	auto_increment,
+	`직원ID`	int	NOT NULL,
+	`Check_in`	datetime	NULL,
+	`Check_out`	datetime	NULL
+);
 ```
 
   
 ### 8. 
 ```sql
-
+CREATE TABLE `Project` (
+	`ProjectId`	int	NOT NULL primary key	auto_increment,
+	`직원ID`	int	NOT NULL,
+	`ProjuctName`	varchar(255)	NOT NULL,
+	`ProjectStart`	datetime	NOT NULL,
+	`ProjuctEnd`	datetime	NOT NULL,
+	`Responsibillity`	varchar(255)	NOT NULL,
+	`Payroll`	varchar(255)	NOT NULL,
+	`role`	varchar(255)	NOT NULL
+);
 ```
 
   
 ### 9. 
 ```sql
-
+CREATE TABLE `Payment` (
+	`PaymentId`	int	NOT NULL primary key	auto_increment,
+	`직원ID`	int	NOT NULL,
+	`Previous_pay`	int	NOT NULL,
+	`Thisyear_pay`	int	NOT NULL,
+	`Previous_bonus`	int	NOT NULL	DEFAULT '0'
+);
 ```
 
 ### 10. 
 ```sql
-
+CREATE TABLE `Score` (
+	`Key`	int	NOT NULL primary key	auto_increment,
+	`직원ID`	int	NOT NULL,
+	`Name`	varchar(255)	NOT NULL,
+	`Score`	int	NOT NULL,
+	`Reason`	varchar(255)	NOT NULL
+);
 ```
 
   
 ### 11. 
 ```sql
-
+CREATE TABLE `Holiday` (
+	`HolidayId`	int	NOT NULL primary key	auto_increment,
+	`직원ID`	int	NOT NULL,
+	`DetailID`	int	NOT NULL,
+	`Holiday_Type`	varchar(255)	NOT NULL,
+	`Start_Date`	datetime	NOT NULL,
+	`End_Date`	datetime	NOT NULL,
+	`Remain_Holiday`	int	NOT NULL,
+	`Aggrement`	Enum ('Y', 'M')	NOT NULL	
+);
 ```
 
   
 ### 12. 
 ```sql
-
+CREATE TABLE `Rent` (
+	`AssetId`	int	NOT NULL primary key	auto_increment,
+	`직원ID`	int	NOT NULL,
+	`DepartmentID`	int	NOT NULL,
+	`Name`	varchar(255)	NOT NULL,
+	`Count`	int	NOT NULL	DEFAULT '1',
+	`Rent_Start`	datetime	NOT NULL,
+	`Rent_End`	datetime	NULL,
+	`Status`	Enum ('정상', '손상') NOT NULL
+);
 ```
 
   
