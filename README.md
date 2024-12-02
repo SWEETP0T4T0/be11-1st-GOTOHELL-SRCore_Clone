@@ -618,6 +618,7 @@ DELIMITER ;
 <details>
 <summary><b>참여중인 프로젝트 목록조회</b></summary>
 <div markdown="1">
+	
 직원은 자신이 참여 중인 프로젝트 목록을 조회할 수 있다.
 ```sql
 DELIMITER //
