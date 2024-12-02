@@ -106,7 +106,7 @@ Moosic은 총 15개의 테이블로 구성되어 있습니다.
 
 
 <details>
-<summary><b>직원상세정보</b></summary>
+<summary><b>1. 직원상세정보</b></summary>
 <div markdown="1">  
 	
 ```sql
@@ -125,8 +125,12 @@ CREATE TABLE `EmployeeDetail` (
 ```
 </div>
 </details>
-  
-### 2. 부서
+
+
+<details>
+<summary><b>2. 부서</b></summary>
+<div markdown="1">  
+
 ```sql
 CREATE TABLE `Department` (
 	`DepartmentId`	int	NOT NULL	primary key	auto_increment,
@@ -134,9 +138,14 @@ CREATE TABLE `Department` (
 	`DepartmentChange`	varchar(255)	NOT NULL	DEFAULT '없음'
 );
 ```
+</div>
+</details>
 
-  
-### 3. 직급
+
+<details>
+<summary><b>3.직급</b></summary>
+<div markdown="1">    
+
 ```sql
 CREATE TABLE `Position` (
 	`PositionID`	int	NOT NULL	primary key	auto_increment,
@@ -144,9 +153,14 @@ CREATE TABLE `Position` (
 	`PositionChange`	varchar(255)	NOT NULL	DEFAULT '없음'
 );
 ```
+</div>
+</details>
 
-  
-### 4. 직원
+
+<details>
+<summary><b>4. 직원</b></summary>
+<div markdown="1">      
+
 ```sql
 CREATE TABLE `Employee` (
 	`EmployeeId`	int	NOT NULL primary key	auto_increment,
@@ -157,9 +171,14 @@ CREATE TABLE `Employee` (
 	`Type`	varchar(255)	NOT NULL
 );
 ```
+</div>
+</details>
 
+
+<details>
+<summary><b>4. 직원</b></summary>
+<div markdown="1"> 
   
-### 5. 
 ```sql
 CREATE TABLE `Qualification` (
 	`QualificationsID`	int	NOT NULL primary key	auto_increment,
@@ -169,6 +188,10 @@ CREATE TABLE `Qualification` (
 	`expire_date`	datetime	NULL
 );
 ```
+</div>
+</details>
+
+
 
   
 ### 6. 
