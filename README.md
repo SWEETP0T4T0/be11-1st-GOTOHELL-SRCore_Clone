@@ -506,7 +506,7 @@ DELIMITER ;
 <details>
 <summary><b>보너스지급</b></summary>
 <div markdown="1">
-
+관리자는 직원에게 보너스를 지급할 수 있다.
 ```sql
 DELIMITER //
 CREATE PROCEDURE UpdateEmployeeBonus(IN em_id INT, IN new_bonus DECIMAL(10, 2))
@@ -526,7 +526,7 @@ DELIMITER ;
 <details>
 <summary><b>보너스 지급내역 조회</b></summary>
 <div markdown="1">
-
+관리자는 보너스 지급 내역을 조회할 수 있다.
 ```sql
 DELIMITER //
 CREATE PROCEDURE GetBonusDetails(IN min_bonus DECIMAL(10, 2))
@@ -544,11 +544,26 @@ DELIMITER ;
 
 
 <details>
-<summary><b>제목</b></summary>
+<summary><b>프로젝트 등록</b></summary>
 <div markdown="1">
-
+관리자는 프로젝트를 등록할 수 있다.
 ```sql
-
+DELIMITER //
+CREATE PROCEDURE RegisterProject(
+    IN emp_id INT,
+    IN project_name VARCHAR(255),
+    IN start_date DATE,
+    IN end_date DATE,
+    IN responsibility VARCHAR(255),
+    IN role VARCHAR(255),
+    IN salary DECIMAL(10, 2)
+)
+BEGIN
+    INSERT INTO Projects (EmployeeID, ProjectName, StartDate, EndDate, Responsibility, Role, Salary)
+    VALUES (emp_id, project_name, start_date, end_date, responsibility, role, salary);
+END;
+//
+DELIMITER ;
 ```
 
 </div>
@@ -556,11 +571,22 @@ DELIMITER ;
 
 
 <details>
-<summary><b>제목</b></summary>
+<summary><b>프로젝트 수정</b></summary>
 <div markdown="1">
-
+관리자는 프로젝트 정보를 수정할 수 있다.
 ```sql
-
+DELIMITER //
+CREATE PROCEDURE UpdateProjectName(
+    IN project_id INT,
+    IN new_project_name VARCHAR(255)
+)
+BEGIN
+    UPDATE Projects
+    SET ProjectName = new_project_name
+    WHERE ProjectID = project_id;
+END;
+//
+DELIMITER ;
 ```
 
 </div>
@@ -568,11 +594,21 @@ DELIMITER ;
 
 
 <details>
-<summary><b>제목</b></summary>
+<summary><b>프로젝트 참여직원 조회</b></summary>
 <div markdown="1">
-
+ 관리자는 프로젝트에 참여 중인 직원 목록을 조회할 수 있다.
 ```sql
-
+DELIMITER //
+CREATE PROCEDURE GetProjectParticipants(
+    IN project_id INT
+)
+BEGIN
+    SELECT EmployeeID, Role 
+    FROM Projects 
+    WHERE ProjectID = project_id;
+END;
+//
+DELIMITER ;
 ```
 
 </div>
@@ -580,11 +616,21 @@ DELIMITER ;
 
 
 <details>
-<summary><b>제목</b></summary>
+<summary><b>참여중인 프로젝트 목록조회</b></summary>
 <div markdown="1">
-
+직원은 자신이 참여 중인 프로젝트 목록을 조회할 수 있다.
 ```sql
-
+DELIMITER //
+CREATE PROCEDURE GetEmployeeProjects(
+    IN emp_id INT
+)
+BEGIN
+    SELECT ProjectName, Role 
+    FROM Projects 
+    WHERE EmployeeID = emp_id;
+END;
+//
+DELIMITER ;
 ```
 
 </div>
