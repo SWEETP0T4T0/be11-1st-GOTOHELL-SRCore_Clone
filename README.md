@@ -100,7 +100,7 @@
 
 ---
 # 📑 Schema
-Moosic은 총 15개의 테이블로 구성되어 있습니다.
+HRCore는 총 15개의 테이블로 구성되어 있습니다.
   
 자세한 내용은 [여기](https://github.com/beyond-sw-camp/be07_1st_1team_Moosic/blob/main/schema/team1_moosic_schema.sql)에서 보실 수 있습니다.
 
@@ -110,17 +110,17 @@ Moosic은 총 15개의 테이블로 구성되어 있습니다.
 <div markdown="1">  
 	
 ```sql
-CREATE TABLE `EmployeeDetail` (
-	`DetaiID`	int	NOT NULL primary key auto_increment,
-	`name`	Varchar(255)	NOT NULL,
-	`age`	int	NOT NULL,
-	`Address`	varchar(255)	NOT NULL,
-	`Resident_number`	varchar(13)	NOT NULL,
-	`Marry`	Enum ('기혼', '미혼') NOT NULL,
-	`Education`	varchar(255)	NOT NULL,
-	`Payroll`	varchar(255)	NOT NULL,
-	`Start_date`	datetime	NOT NULL,
-	`NowStatus`	Enum ('Y', 'N') NOT NULL default 'Y' 
+CREATE TABLE EmployeeDetails (
+    DetailID INT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(255) NOT NULL,
+    Age INT NOT NULL,
+    Address VARCHAR(255) NOT NULL,
+    ResidentNumber VARCHAR(14) NOT NULL,
+    MaritalStatus ENUM('기혼', '미혼') NOT NULL,
+    Education VARCHAR(255),
+    Salary DECIMAL(10, 2),
+    StartDate DATE NOT NULL,
+    CurrentStatus ENUM('Y', 'N') DEFAULT 'Y'
 );
 ```
 </div>
@@ -132,10 +132,9 @@ CREATE TABLE `EmployeeDetail` (
 <div markdown="1">  
 
 ```sql
-CREATE TABLE `Department` (
-	`DepartmentId`	int	NOT NULL	primary key	auto_increment,
-	`DepartmentName`	varchar(255)	NOT NULL,
-	`DepartmentChange`	varchar(255)	NOT NULL	DEFAULT '없음'
+CREATE TABLE Departments (
+    DepartmentID INT PRIMARY KEY AUTO_INCREMENT,
+    DepartmentName VARCHAR(255) NOT NULL
 );
 ```
 </div>
@@ -147,10 +146,9 @@ CREATE TABLE `Department` (
 <div markdown="1">    
 
 ```sql
-CREATE TABLE `Position` (
-	`PositionID`	int	NOT NULL	primary key	auto_increment,
-	`PositionName`	int	NOT NULL,
-	`PositionChange`	varchar(255)	NOT NULL	DEFAULT '없음'
+CREATE TABLE Positions (
+    PositionID INT PRIMARY KEY AUTO_INCREMENT,
+    PositionName VARCHAR(255) NOT NULL
 );
 ```
 </div>
@@ -162,13 +160,15 @@ CREATE TABLE `Position` (
 <div markdown="1">      
 
 ```sql
-CREATE TABLE `Employee` (
-	`EmployeeId`	int	NOT NULL primary key	auto_increment,
-	`DetailID`	int	NOT NULL,
-	`DepartmentID`	int	NOT NULL,
-	`Position`	int	NOT NULL,
-	`Name`	varchar(255)	NOT NULL,
-	`Type`	varchar(255)	NOT NULL
+CREATE TABLE Employees (
+    EmployeeID INT PRIMARY KEY AUTO_INCREMENT,
+    DetailID INT NOT NULL,
+    DepartmentID INT NOT NULL,
+    PositionID INT NOT NULL,
+    EmployeeType VARCHAR(50) NOT NULL,
+    FOREIGN KEY (DetailID) REFERENCES EmployeeDetails(DetailID),
+    FOREIGN KEY (DepartmentID) REFERENCES Departments(DepartmentID),
+    FOREIGN KEY (PositionID) REFERENCES Positions(PositionID)
 );
 ```
 </div>
@@ -180,12 +180,13 @@ CREATE TABLE `Employee` (
 <div markdown="1"> 
   
 ```sql
-CREATE TABLE `Qualification` (
-	`QualificationsID`	int	NOT NULL primary key	auto_increment,
-	`DetaiID`	int	NOT NULL,
-	`QualificationsName`	varchar(255)	NOT NULL,
-	`issu_date`	datetime	NOT NULL,
-	`expire_date`	datetime	NULL
+CREATE TABLE Qualifications (
+    QualificationID INT PRIMARY KEY AUTO_INCREMENT,
+    DetailID INT NOT NULL,
+    QualificationName VARCHAR(255) NOT NULL,
+    IssueDate DATE NOT NULL,
+    ExpiryDate DATE,
+    FOREIGN KEY (DetailID) REFERENCES EmployeeDetails(DetailID)
 );
 ```
 </div>
@@ -194,110 +195,192 @@ CREATE TABLE `Qualification` (
 
 
 <details>
-<summary><b>1. 제목</b></summary>
+<summary><b>6. 파견이력</b></summary>
 <div markdown="1">   
 
 ```sql
-
+CREATE TABLE DispatchDetails (
+    DispatchID INT PRIMARY KEY AUTO_INCREMENT,
+    EmployeeID INT NOT NULL,
+    DispatchStartDate DATE NOT NULL,
+    DispatchEndDate DATE,
+    DispatchRole VARCHAR(255) NOT NULL,
+    Salary DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (EmployeeID) REFERENCES Employees(EmployeeID)
+);
 ```
 </div>
 </details>
 
 
 <details>
-<summary><b>1. 제목</b></summary>
+<summary><b>7. 근태기록</b></summary>
 <div markdown="1">   
 
 ```sql
-
+CREATE TABLE Attendance (
+    AttendanceID INT PRIMARY KEY AUTO_INCREMENT,
+    EmployeeID INT NOT NULL,
+    CheckIn DATETIME,
+    CheckOut DATETIME,
+    FOREIGN KEY (EmployeeID) REFERENCES Employees(EmployeeID)
+);
 ```
 </div>
 </details>
 
 
 <details>
-<summary><b>1. 제목</b></summary>
+<summary><b>8. 직원 가족관계</b></summary>
 <div markdown="1">   
 
 ```sql
-
+CREATE TABLE Families (
+    FamilyID INT PRIMARY KEY AUTO_INCREMENT,
+    DetailID INT NOT NULL,
+    Relationship VARCHAR(255) NOT NULL,
+    FamilyMemberName VARCHAR(255) NOT NULL,
+    BirthDate DATE NOT NULL,
+    ContactNumber VARCHAR(15),
+    FOREIGN KEY (DetailID) REFERENCES EmployeeDetails(DetailID)
+);
 ```
 </div>
 </details>
 
 
 <details>
-<summary><b>1. 제목</b></summary>
+<summary><b>9. 프로젝트 참여기록</b></summary>
 <div markdown="1">   
 
 ```sql
-
+CREATE TABLE Projects (
+    ProjectID INT PRIMARY KEY AUTO_INCREMENT,
+    EmployeeID INT NOT NULL,
+    ProjectName VARCHAR(255) NOT NULL,
+    StartDate DATE NOT NULL,
+    EndDate DATE NOT NULL,
+    Responsibility VARCHAR(255) NOT NULL,
+    Role VARCHAR(255) NOT NULL,
+    Salary DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (EmployeeID) REFERENCES Employees(EmployeeID)
+);
 ```
 </div>
 </details>
 
 
 <details>
-<summary><b>1. 제목</b></summary>
+<summary><b>10. 급여</b></summary>
 <div markdown="1">   
 
 ```sql
-
+CREATE TABLE Payments (
+    PaymentID INT PRIMARY KEY AUTO_INCREMENT,
+    EmployeeID INT NOT NULL,
+    PreviousSalary DECIMAL(10, 2) NOT NULL,
+    CurrentSalary DECIMAL(10, 2) NOT NULL,
+    Bonus DECIMAL(10, 2) DEFAULT 0,
+    FOREIGN KEY (EmployeeID) REFERENCES Employees(EmployeeID)
+);
 ```
 </div>
 </details>
 
 
 <details>
-<summary><b>1. 제목</b></summary>
+<summary><b>11. 인사평가</b></summary>
 <div markdown="1">   
 
 ```sql
-
+CREATE TABLE Scores (
+    ScoreID INT PRIMARY KEY AUTO_INCREMENT,
+    EmployeeID INT NOT NULL,
+    EvaluationName VARCHAR(255) NOT NULL,
+    ScoreValue INT NOT NULL,
+    EvaluationReason VARCHAR(255) NOT NULL,
+    FOREIGN KEY (EmployeeID) REFERENCES Employees(EmployeeID)
+);
 ```
 </div>
 </details>
 
 
 <details>
-<summary><b>1. 제목</b></summary>
+<summary><b>12. 휴가 및 연차</b></summary>
 <div markdown="1">   
 
 ```sql
-
+CREATE TABLE Holidays (
+    HolidayID INT PRIMARY KEY AUTO_INCREMENT,
+    EmployeeID INT NOT NULL,
+    HolidayType VARCHAR(255) NOT NULL,
+    StartDate DATE NOT NULL,
+    EndDate DATE NOT NULL,
+    RemainingDays INT NOT NULL,
+    ApprovalStatus ENUM('승인', '대기') NOT NULL,
+    FOREIGN KEY (EmployeeID) REFERENCES Employees(EmployeeID)
+);
 ```
 </div>
 </details>
 
 
 <details>
-<summary><b>1. 제목</b></summary>
+<summary><b>13. 대여장비</b></summary>
 <div markdown="1">   
 
 ```sql
-
+CREATE TABLE Rents (
+    RentID INT PRIMARY KEY AUTO_INCREMENT,
+    EmployeeID INT NOT NULL,
+    AssetName VARCHAR(255) NOT NULL,
+    Quantity INT DEFAULT 1,
+    RentStartDate DATE NOT NULL,
+    RentEndDate DATE,
+    AssetStatus ENUM('정상', '손상') NOT NULL,
+    FOREIGN KEY (EmployeeID) REFERENCES Employees(EmployeeID)
+);
 ```
 </div>
 </details>
 
 
 <details>
-<summary><b>1. 제목</b></summary>
+<summary><b>14. 직원교육이력</b></summary>
 <div markdown="1">   
 
 ```sql
-
+CREATE TABLE EmployeeEducation (
+    EducationID INT PRIMARY KEY AUTO_INCREMENT,
+    EmployeeID INT NOT NULL,
+    CourseName VARCHAR(255) NOT NULL,
+    StartDate DATE NOT NULL,
+    EndDate DATE NOT NULL,
+    FOREIGN KEY (EmployeeID) REFERENCES Employees(EmployeeID)
+);
 ```
 </div>
 </details>
 
 
 <details>
-<summary><b>1. 제목</b></summary>
+<summary><b>15. 변경내용</b></summary>
 <div markdown="1">   
 
 ```sql
+CREATE TABLE ChangeHistory(
+HistoryId INT PRIMARY KEY AUTO_INCREMENT,
+EmployeeID INT NOT NULL,
+PositionID INT NOT NULL,
+DepartmentID INT NOT NULL,
+AppointmentDate DATETIME NOT NULL,
+FOREIGN KEY (EmployeeId) REFERENCES employees(employeeid),
+FOREIGN KEY (positionId) REFERENCES positions(positionid),
+FOREIGN KEY (departmentid) REFERENCES departments(departmentid));
 
+ALTER TABLE `positions` AUTO_INCREMENT = 1111;
+ALTER TABLE `Departments` AUTO_INCREMENT = 101;
 ```
 </div>
 </details>
@@ -317,17 +400,16 @@ CREATE TABLE `Qualification` (
 ---
 
 # ✨ 프로시저
-
-
+ 
 <details>
 <summary><b>부서등록</b></summary>
-<div markdown="1">
+<div markdown="2">
 
 ```sql
 DELIMITER //
 CREATE PROCEDURE 부서등록(in dp_name_input varchar(255))
 begin
-	INSERT INTO Departments (DepartmentName) VALUES (dp_name_input);
+INSERT INTO Departments (DepartmentName) VALUES (dp_name_input);
 end;
 //
 DELIMITER ;
@@ -338,8 +420,7 @@ DELIMITER ;
 
 <details>
 <summary><b>부서수정</b></summary>
-<div markdown="1">
-
+<div markdown="2">
 
 ```sql
 DELIMITER //
@@ -350,7 +431,7 @@ end;
 //
 DELIMITER ;
 ```
-
+	
 </div>
 </details>
 
@@ -508,6 +589,7 @@ DELIMITER ;
 <div markdown="1">
 	
 관리자는 직원에게 보너스를 지급할 수 있다.
+
 ```sql
 DELIMITER //
 CREATE PROCEDURE UpdateEmployeeBonus(IN em_id INT, IN new_bonus DECIMAL(10, 2))
@@ -529,6 +611,7 @@ DELIMITER ;
 <div markdown="1">
 	
 관리자는 보너스 지급 내역을 조회할 수 있다.
+
 ```sql
 DELIMITER //
 CREATE PROCEDURE GetBonusDetails(IN min_bonus DECIMAL(10, 2))
@@ -550,6 +633,7 @@ DELIMITER ;
 <div markdown="1">
 	
 관리자는 프로젝트를 등록할 수 있다.
+
 ```sql
 DELIMITER //
 CREATE PROCEDURE RegisterProject(
@@ -578,6 +662,7 @@ DELIMITER ;
 <div markdown="1">
 	
 관리자는 프로젝트 정보를 수정할 수 있다.
+
 ```sql
 DELIMITER //
 CREATE PROCEDURE UpdateProjectName(
@@ -602,6 +687,7 @@ DELIMITER ;
 <div markdown="1">
 	
  관리자는 프로젝트에 참여 중인 직원 목록을 조회할 수 있다.
+ 
 ```sql
 DELIMITER //
 CREATE PROCEDURE GetProjectParticipants(
@@ -625,6 +711,7 @@ DELIMITER ;
 <div markdown="1">
 	
 직원은 자신이 참여 중인 프로젝트 목록을 조회할 수 있다.
+
 ```sql
 DELIMITER //
 CREATE PROCEDURE GetEmployeeProjects(
@@ -635,6 +722,64 @@ BEGIN
     FROM Projects 
     WHERE EmployeeID = emp_id;
 END;
+//
+DELIMITER ;
+```
+
+</div>
+</details>
+
+
+<details>
+<summary><b>인사평가등록</b></summary>
+<div markdown="1">
+
+```sql
+DELIMITER //
+CREATE PROCEDURE 인사평가등록(in em_id int, in ev_name varchar(255), in score int, in ev_reason varchar(255))
+begin
+	INSERT INTO scores (EmployeeID, EvaluationName, ScoreValue, EvaluationReason)
+VALUES (em_id, ev_name , score, ev_reason);
+end;
+//
+DELIMITER ;
+```
+
+</div>
+</details>
+
+
+<details>
+<summary><b>인사평가수정</b></summary>
+<div markdown="1">
+
+```sql
+DELIMITER //
+CREATE PROCEDURE 인사평가수정(in em_id int, in ev_name varchar(255), in score int, in ev_reason varchar(255))
+begin
+    update scores set EvaluationName = ev_name,
+    ScoreValue = score, EvaluationReason = ev_reason
+    where EmployeeID = em_id;
+end;
+//
+DELIMITER ;
+```
+
+</div>
+</details>
+
+
+<details>
+<summary><b>인사평가조회</b></summary>
+<div markdown="1">
+
+```sql
+DELIMITER //
+CREATE PROCEDURE 인사평가조회(in em_id int)
+begin
+    select * from Scores
+    where EmployeeID = em_id;
+end;
 //
 DELIMITER ;
 ```
@@ -667,17 +812,6 @@ DELIMITER ;
 </details>
 
 
-<details>
-<summary><b>제목</b></summary>
-<div markdown="1">
-
-```sql
-
-```
-
-</div>
-</details>
-
 
 <details>
 <summary><b>제목</b></summary>
@@ -691,6 +825,7 @@ DELIMITER ;
 </details>
 
 
+
 <details>
 <summary><b>제목</b></summary>
 <div markdown="1">
@@ -702,4 +837,55 @@ DELIMITER ;
 </div>
 </details>
 
+
+
+<details>
+<summary><b>제목</b></summary>
+<div markdown="1">
+
+```sql
+
+```
+
+</div>
+</details>
+
+
+
+<details>
+<summary><b>제목</b></summary>
+<div markdown="1">
+
+```sql
+
+```
+
+</div>
+</details>
+
+
+
+<details>
+<summary><b>제목</b></summary>
+<div markdown="1">
+
+```sql
+
+```
+
+</div>
+</details>
+
+
+
+<details>
+<summary><b>제목</b></summary>
+<div markdown="1">
+
+```sql
+
+```
+
+</div>
+</details>
 
