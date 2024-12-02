@@ -504,11 +504,19 @@ DELIMITER ;
 
 
 <details>
-<summary><b>제목</b></summary>
+<summary><b>보너스지급</b></summary>
 <div markdown="1">
 
 ```sql
-
+DELIMITER //
+CREATE PROCEDURE UpdateEmployeeBonus(IN em_id INT, IN new_bonus DECIMAL(10, 2))
+BEGIN
+    UPDATE Payments
+    SET Bonus = new_bonus
+    WHERE EmployeeID = em_id;
+END;
+//
+DELIMITER ;
 ```
 
 </div>
@@ -516,11 +524,19 @@ DELIMITER ;
 
 
 <details>
-<summary><b>제목</b></summary>
+<summary><b>보너스 지급내역 조회</b></summary>
 <div markdown="1">
 
 ```sql
-
+DELIMITER //
+CREATE PROCEDURE GetBonusDetails(IN min_bonus DECIMAL(10, 2))
+BEGIN
+    SELECT EmployeeID, Bonus
+    FROM Payments
+    WHERE Bonus > min_bonus;
+END;
+//
+DELIMITER ;
 ```
 
 </div>
