@@ -1,4 +1,4 @@
-1. 자격증 정보 등록 프로시저
+1. 관리자는 직원의 자격증 정보를 등록할 수 있다.
 DELIMITER $$
 CREATE PROCEDURE RegisterQualification (
     IN p_DetailID INT, 
@@ -46,7 +46,7 @@ END $$
 DELIMITER ;
 
 
-2.자격증 정보 수정 프로시저
+2.관리자는 직원의 자격증 정보를 수정할 수 있다.
 DELIMITER $$
 CREATE PROCEDURE UpdateQualification (
     IN p_QualificationID INT,
@@ -103,7 +103,7 @@ BEGIN
 END $$
 DELIMITER ;
 
-3. 자신의 자격증 조회 프로시저
+3. 직원은 자신의 자격증 정보를 조회할 수 있다.
 DELIMITER $$
 CREATE PROCEDURE GetEmployeeQualifications (
     IN p_DetailID INT
