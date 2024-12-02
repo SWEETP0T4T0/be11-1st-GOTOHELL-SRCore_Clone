@@ -323,40 +323,40 @@ CREATE TABLE `Qualification` (
 <div markdown="1">
 
  
-<details>
-<summary><b>부서등록</b></summary>
-<div markdown="1">
-
-```sql
-DELIMITER //
-CREATE PROCEDURE 부서등록(in dp_name_input varchar(255))
-begin
-	INSERT INTO Departments (DepartmentName) VALUES (dp_name_input);
-end;
-//
-DELIMITER ;
-```
-</div>
-</details>
-
-
-<details>
-<summary><b>부서수정</b></summary>
-<div markdown="1">
-
-
-```sql
-DELIMITER //
-CREATE PROCEDURE 부서수정(in inid int, in dp_name_input varchar(255))
-begin
-    update Departments set DepartmentName=dp_name_input where DepartmentId=inid;
-end;
-//
-DELIMITER ;
-```
-
-</div>
-</details>
+	<details>
+	<summary><b>부서등록</b></summary>
+	<div markdown="1">
+	
+	```sql
+	DELIMITER //
+	CREATE PROCEDURE 부서등록(in dp_name_input varchar(255))
+	begin
+		INSERT INTO Departments (DepartmentName) VALUES (dp_name_input);
+	end;
+	//
+	DELIMITER ;
+	```
+	</div>
+	</details>
+	
+	
+	<details>
+	<summary><b>부서수정</b></summary>
+	<div markdown="1">
+	
+	
+	```sql
+	DELIMITER //
+	CREATE PROCEDURE 부서수정(in inid int, in dp_name_input varchar(255))
+	begin
+	    update Departments set DepartmentName=dp_name_input where DepartmentId=inid;
+	end;
+	//
+	DELIMITER ;
+	```
+	
+	</div>
+	</details>
 
 </div>
 </details>
