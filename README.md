@@ -12,9 +12,9 @@
       </tr>
       <tr>
         <td align="center">팀장: <a href="https://github.com/Choi-Moori">정준환</a></td>
-        <td align="center">팀원: <a href="https://github.com/jiho3634">이태희</a></td>
+        <td align="center">팀원: <a href="https://github.com/SWEETP0T4T0">이태희</a></td>
         <td align="center">팀원: <a href="https://github.com/clean2001" >소병윤</a></td>
-	    <td align="center">팀원: <a href="https://github.com/clean2001" >최영일</a></td>
+	<td align="center">팀원: <a href="https://github.com/clean2001" >최영일</a></td>
       </tr>
     </table>
 </figure>
