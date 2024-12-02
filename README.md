@@ -11,16 +11,16 @@
 <figure>
     <table>
       <tr>
-        <td align="center"><img src="https://avatars.githubusercontent.com/u/117874745?v=4" width="180px"/></td>
-        <td align="center"><img src="https://avatars.githubusercontent.com/u/117874745?v=4" width="180px"/></td>
-        <td align="center"><img src="https://avatars.githubusercontent.com/u/117874745?v=4" width="180px"/></td>
-	<td align="center"><img src="https://avatars.githubusercontent.com/u/117874745?v=4" width="180px"/></td>
+        <td align="center"><img src="https://avatars.githubusercontent.com/u/95538973?v=4" width="180px"/></td>
+        <td align="center"><img src="https://avatars.githubusercontent.com/u/185882822?v=4" width="180px"/></td>
+        <td align="center"><img src="https://avatars.githubusercontent.com/u/93423242?v=4" width="180px"/></td>
+	<td align="center"><img src="https://avatars.githubusercontent.com/u/186559215?v=4" width="180px"/></td>
       </tr>
       <tr>
-        <td align="center">팀장: <a href="https://github.com/Choi-Moori">정준환</a></td>
-        <td align="center">팀원: <a href="https://github.com/jiho3634">이태희</a></td>
-        <td align="center">팀원: <a href="https://github.com/clean2001" >소병윤</a></td>
-	<td align="center">팀원: <a href="https://github.com/clean2001" >최영일</a></td>
+        <td align="center">팀장: <a href="https://github.com/JungJunHwan">정준환</a></td>
+        <td align="center">팀원: <a href="https://github.com/SWEETP0T4T0">이태희</a></td>
+        <td align="center">팀원: <a href="https://github.com/2ma1995" >소병윤</a></td>
+	<td align="center">팀원: <a href="https://github.com/01youngil" >최영일</a></td>
       </tr>
     </table>
 </figure>
