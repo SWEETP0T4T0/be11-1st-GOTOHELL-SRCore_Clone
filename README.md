@@ -506,6 +506,7 @@ DELIMITER ;
 <details>
 <summary><b>보너스지급</b></summary>
 <div markdown="1">
+	
 관리자는 직원에게 보너스를 지급할 수 있다.
 ```sql
 DELIMITER //
@@ -526,6 +527,7 @@ DELIMITER ;
 <details>
 <summary><b>보너스 지급내역 조회</b></summary>
 <div markdown="1">
+	
 관리자는 보너스 지급 내역을 조회할 수 있다.
 ```sql
 DELIMITER //
@@ -546,6 +548,7 @@ DELIMITER ;
 <details>
 <summary><b>프로젝트 등록</b></summary>
 <div markdown="1">
+	
 관리자는 프로젝트를 등록할 수 있다.
 ```sql
 DELIMITER //
@@ -573,6 +576,7 @@ DELIMITER ;
 <details>
 <summary><b>프로젝트 수정</b></summary>
 <div markdown="1">
+	
 관리자는 프로젝트 정보를 수정할 수 있다.
 ```sql
 DELIMITER //
@@ -596,6 +600,7 @@ DELIMITER ;
 <details>
 <summary><b>프로젝트 참여직원 조회</b></summary>
 <div markdown="1">
+	
  관리자는 프로젝트에 참여 중인 직원 목록을 조회할 수 있다.
 ```sql
 DELIMITER //
