@@ -318,7 +318,11 @@ CREATE TABLE `Qualification` (
 
 # ✨ 프로시저
 
+<details>
+<summary><b>부서관리</b></summary>
+<div markdown="1">
 
+ 
 <details>
 <summary><b>부서등록</b></summary>
 <div markdown="1">
@@ -350,6 +354,9 @@ end;
 //
 DELIMITER ;
 ```
+
+</div>
+</details>
 
 </div>
 </details>
