@@ -204,107 +204,109 @@ CREATE TABLE `Qualification` (
 </details>
 
 
+<details>
+<summary><b>1. 제목</b></summary>
+<div markdown="1">   
+
+```sql
+
+```
+</div>
+</details>
+
+
+<details>
+<summary><b>1. 제목</b></summary>
+<div markdown="1">   
+
+```sql
+
+```
+</div>
+</details>
+
+
+<details>
+<summary><b>1. 제목</b></summary>
+<div markdown="1">   
+
+```sql
+
+```
+</div>
+</details>
+
+
+<details>
+<summary><b>1. 제목</b></summary>
+<div markdown="1">   
+
+```sql
+
+```
+</div>
+</details>
+
+
+<details>
+<summary><b>1. 제목</b></summary>
+<div markdown="1">   
+
+```sql
+
+```
+</div>
+</details>
+
+
+<details>
+<summary><b>1. 제목</b></summary>
+<div markdown="1">   
+
+```sql
+
+```
+</div>
+</details>
+
+
+<details>
+<summary><b>1. 제목</b></summary>
+<div markdown="1">   
+
+```sql
+
+```
+</div>
+</details>
+
+
+<details>
+<summary><b>1. 제목</b></summary>
+<div markdown="1">   
+
+```sql
+
+```
+</div>
+</details>
+
+
+<details>
+<summary><b>1. 제목</b></summary>
+<div markdown="1">   
+
+```sql
+
+```
+</div>
+</details>
+
+
+
+
   
-### 7. 
-```sql
-CREATE TABLE `Attendence` (
-	`AttendenceId`	int	NOT NULL primary key	auto_increment,
-	`직원ID`	int	NOT NULL,
-	`Check_in`	datetime	NULL,
-	`Check_out`	datetime	NULL
-);
-```
 
-  
-### 8. 
-```sql
-CREATE TABLE `Project` (
-	`ProjectId`	int	NOT NULL primary key	auto_increment,
-	`직원ID`	int	NOT NULL,
-	`ProjuctName`	varchar(255)	NOT NULL,
-	`ProjectStart`	datetime	NOT NULL,
-	`ProjuctEnd`	datetime	NOT NULL,
-	`Responsibillity`	varchar(255)	NOT NULL,
-	`Payroll`	varchar(255)	NOT NULL,
-	`role`	varchar(255)	NOT NULL
-);
-```
-
-  
-### 9. 
-```sql
-CREATE TABLE `Payment` (
-	`PaymentId`	int	NOT NULL primary key	auto_increment,
-	`직원ID`	int	NOT NULL,
-	`Previous_pay`	int	NOT NULL,
-	`Thisyear_pay`	int	NOT NULL,
-	`Previous_bonus`	int	NOT NULL	DEFAULT '0'
-);
-```
-
-### 10. 
-```sql
-CREATE TABLE `Score` (
-	`Key`	int	NOT NULL primary key	auto_increment,
-	`직원ID`	int	NOT NULL,
-	`Name`	varchar(255)	NOT NULL,
-	`Score`	int	NOT NULL,
-	`Reason`	varchar(255)	NOT NULL
-);
-```
-
-  
-### 11. 
-```sql
-CREATE TABLE `Holiday` (
-	`HolidayId`	int	NOT NULL primary key	auto_increment,
-	`직원ID`	int	NOT NULL,
-	`DetailID`	int	NOT NULL,
-	`Holiday_Type`	varchar(255)	NOT NULL,
-	`Start_Date`	datetime	NOT NULL,
-	`End_Date`	datetime	NOT NULL,
-	`Remain_Holiday`	int	NOT NULL,
-	`Aggrement`	Enum ('Y', 'M')	NOT NULL	
-);
-```
-
-  
-### 12. 
-```sql
-CREATE TABLE `Rent` (
-	`AssetId`	int	NOT NULL primary key	auto_increment,
-	`직원ID`	int	NOT NULL,
-	`DepartmentID`	int	NOT NULL,
-	`Name`	varchar(255)	NOT NULL,
-	`Count`	int	NOT NULL	DEFAULT '1',
-	`Rent_Start`	datetime	NOT NULL,
-	`Rent_End`	datetime	NULL,
-	`Status`	Enum ('정상', '손상') NOT NULL
-);
-```
-
-  
-### 13. 
-```sql
-CREATE TABLE `EmployeeEdu` (
-	`EduID`	int	NOT NULL primary key	auto_increment,
-	`EmployeeId`	int	NOT NULL,
-	`EduName`	varchar(255)	NOT NULL,
-	`EduStart`	datetime	NOT NULL,
-	`EduEnd`	datetime	NOT NULL
-);
-```
-  
-
-### 14. 
-```sql
-
-```
-
-### 15. 
-```sql
-
-```
 
 ---
 
