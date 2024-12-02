@@ -84,4 +84,4 @@ create procedure 교육과정조회(in inemployeeid int(11))
 begin
 	select * from employeeeducation where inemployeeid=employeeid;
 end
-// DELIMITER ;
+// DELIMITER ; 
