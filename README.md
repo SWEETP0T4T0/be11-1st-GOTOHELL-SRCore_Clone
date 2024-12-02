@@ -328,7 +328,7 @@ CREATE TABLE `Qualification` (
  
 <details>
 <summary><b>부서등록</b></summary>
-<div markdown="1">
+<div markdown="2">
 
 ```sql
 DELIMITER //
@@ -345,7 +345,7 @@ DELIMITER ;
 
 <details>
 <summary><b>부서수정</b></summary>
-<div markdown="1">
+<div markdown="2">
 
 
 ```sql
