@@ -448,11 +448,18 @@ DELIMITER ;
 
 
 <details>
-<summary><b>제목</b></summary>
+<summary><b>급여등록</b></summary>
 <div markdown="1">
 
 ```sql
-
+DELIMITER //
+CREATE PROCEDURE 급여등록(in em_id int, in pre_pay int, in ths_pay int, in pre_bo int)
+begin
+	INSERT INTO Payment (직원ID, previous_pay, thisyear_pay, Previous_bonus)
+VALUES (em_id, pre_pay ,ths_pay, pre_bo);
+end;
+//
+DELIMITER ;
 ```
 
 </div>
@@ -460,11 +467,17 @@ DELIMITER ;
 
 
 <details>
-<summary><b>제목</b></summary>
+<summary><b>급여수정</b></summary>
 <div markdown="1">
 
 ```sql
-
+DELIMITER //
+CREATE PROCEDURE 급여수정(in em_id int, in pre_pay int, in ths_pay int, in pre_bo int)
+begin
+    update payment set 직원ID = em_id, previous_pay = pre_pay, thisyear_pay = ths_pay, Previous_bonus = pre_bo where 직원id = em_id;
+end;
+//
+DELIMITER ;
 ```
 
 </div>
@@ -472,11 +485,18 @@ DELIMITER ;
 
 
 <details>
-<summary><b>제목</b></summary>
+<summary><b>급여조회</b></summary>
 <div markdown="1">
 
 ```sql
-
+DELIMITER //
+CREATE PROCEDURE 급여조회(in inid int)
+begin
+    select 직원ID, previous_pay, thisyear_pay, Previous_bonus from payment
+    where 직원id = inid;
+end;
+//
+DELIMITER ;
 ```
 
 </div>
