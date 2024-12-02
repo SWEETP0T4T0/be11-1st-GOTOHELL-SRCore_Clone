@@ -16,10 +16,29 @@ begin
 end
 // DELIMITER ;
 
+
+-- 직원 삭제 : 모든 테이블에서 제거
 DELIMITER //
 create procedure 직원정보삭제(in inid int(11))
 begin
-    delete from employeedetails where detailid=inid;
+    declare inId int(11) default (select detailid from employees where employeeid=inId);
+
+    delete from ChangeHistory where employeeid=inid;
+    delete from Rents where employeeid=inid;
+    delete from payments where employeeid=inid;
+    delete from Rents where employeeid=inid;
+    delete from Holidays where employeeid=inid;
+    delete from scores where employeeid=inid;
+    delete from attendance where employeeid=inid;
+    delete from DispatchDetails where employeeid=inid;
+    delete from employeeeducation where employeeid=inid;
+    delete from Projects where employeeid=inid;
+
+    delete from employees where employeeid=inid;
+
+    delete from Qualifications where detailid = inId;
+    delete from Families where detailid = inId;
+    delete from employeedetails where detailid = inId;
 end
 // DELIMITER ;
 
@@ -45,6 +64,7 @@ begin
     select currentstatus, count(*) as '입/퇴사자 현황' from employeedetails group by currentstatus;
 end
 // DELIMITER ;
+
 DELIMITER //
 create procedure 근태기록(in inid int(11), in inCheckIn datetime, in inCheckOut datetime)
 begin
@@ -57,7 +77,7 @@ DELIMITER //
 create procedure 근태조회(in inid int(11), in instartdate datetime, in infinishdate datetime)
 begin
     select e.employeeid, a.checkin, a.checkout from attendance a left join employees e on e.employeeid=a.employeeid
-    where a.checkin >= instartdate and a.checkin <= infinishdate and e.employeeid=inid;
+    where a.checkin >= instartdate and a.checkin <= infinishdate and e.employeeid=inid order by a.checkin;
 end
 // DELIMITER ;
 
