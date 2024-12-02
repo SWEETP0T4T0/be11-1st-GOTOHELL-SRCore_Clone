@@ -61,3 +61,27 @@ begin
 end
 // DELIMITER ;
 
+DELIMITER //
+create procedure 교육과정등록(in inemployeeid int(11), in inCoursename varchar(255), in instartdate date, in inenddate date)
+begin
+	insert into employeeeducation (employeeid, Coursename, startdate, enddate) 
+    values(inemployeeid , inCoursename , startdate, enddate);
+end
+// DELIMITER ;
+
+DELIMITER //
+create procedure 교육과정수정(in inemployeeid int(11), in ineducationid int(11), in inCoursename varchar(255), 
+in instartdate date, in inenddate date)
+begin
+	update employeeeducation set employeeid=inemployeeid, Coursename=inCoursename, 
+    startdate=instartdate, enddate=inenddate
+    where ineducationid=educationid;
+end
+// DELIMITER ;
+
+DELIMITER //
+create procedure 교육과정조회(in inemployeeid int(11))
+begin
+	select * from employeeeducation where inemployeeid=employeeid;
+end
+// DELIMITER ;
