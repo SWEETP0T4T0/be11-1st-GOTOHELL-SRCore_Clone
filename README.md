@@ -1323,10 +1323,12 @@ DELIMITER ;
 <summary><b>자산 대여 상태 변경</b></summary>
 <div markdown="1">
 관리자는 자산의 대여 상태를 변경할 수 있다.
-
-<img width="300" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/자산관리/자산관리_수정_성공.png">
-<img width="300" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/자산관리/자산관리_수정_실패1.png">
-<img width="300" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/자산관리/자산관리_수정_실패2.png">
+<div>
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/자산관리/자산관리_수정_성공.png"></div>
+<div><img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/자산관리/자산관리_수정_실패1.png"> </div>
+<div>
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/자산관리/자산관리_수정_실패2.png">
+</div>
 
 ```sql
 
