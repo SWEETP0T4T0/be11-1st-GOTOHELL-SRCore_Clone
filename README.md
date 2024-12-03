@@ -1556,7 +1556,7 @@ DELIMITER ;
 <details>
 <summary><b>가족관계 조회</b></summary>
 <div markdown="1">
-<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/가족관계관리/가족정보조회_성공.png">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/가족관계관리/특정직원 가족관계조회.png">
 
 ```sql
 DELIMITER //
@@ -1587,7 +1587,7 @@ DELIMITER ;
 <details>
 <summary><b>자신의 가족관계 조회</b></summary>
 <div markdown="1">
-<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/가족관계관리/특정직원 가족관계조회.png">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/가족관계관리/가족정보조회_성공.png">
 
 ```sql
 DELIMITER //
