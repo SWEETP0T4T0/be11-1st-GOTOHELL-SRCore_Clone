@@ -219,7 +219,7 @@ CREATE TABLE DispatchDetails (
 <details>
 <summary><b>7. 근태기록</b></summary>
 <div markdown="1">   
-<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/근태관리/근태기록.png">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/근태관리/근태기록.PNG">
 
 ```sql
 CREATE TABLE Attendance (
@@ -402,7 +402,7 @@ ALTER TABLE `Departments` AUTO_INCREMENT = 101;
 <details>
 <summary><b>직원정보등록</b></summary>
 <div markdown="1">
-<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/직원정보관리/직원정보등록_캡처.png">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/직원정보관리/직원정보등록_캡처.PNG">
 
 ```sql
 DELIMITER //
@@ -422,7 +422,7 @@ end
 <details>
 <summary><b>직원정보수정</b></summary>
 <div markdown="1">
-<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/직원정보관리/직원정보수정_캡처.png">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/직원정보관리/직원정보수정_캡처.PNG">
 
 ```sql
 DELIMITER //
@@ -442,8 +442,8 @@ end
 <details>
 <summary><b>직원정보삭제</b></summary>
 <div markdown="1">
-<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/직원정보관리/직원정보삭제(1)_캡처.png">
-<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/직원정보관리/직원정보삭제(2)_캡처.png">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/직원정보관리/직원정보삭제(1)_캡처.PNG">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/직원정보관리/직원정보삭제(2)_캡처.PNG">
 
 ```sql
 DELIMITER //
@@ -461,7 +461,7 @@ end
 <details>
 <summary><b>직원상세정보조회</b></summary>
 <div markdown="1">
-<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/직원정보관리/직원상세정보조회_캡처.png">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/직원정보관리/직원상세정보조회_캡처.PNG">
 
 ```sql
 DELIMITER //
@@ -481,7 +481,7 @@ end
 <details>
 <summary><b>퇴사자정보등록</b></summary>
 <div markdown="1">
-<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/직원정보관리/퇴사자정보등록.png">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/직원정보관리/퇴사자정보등록.PNG">
 
 ```sql
 DELIMITER //
@@ -499,7 +499,7 @@ end
 <details>
 <summary><b>입퇴사자현황조회</b></summary>
 <div markdown="1">
-<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/직원정보관리/입퇴사자현황조회_캡처.png">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/직원정보관리/입퇴사자현황조회_캡처.PNG">
 
 ```sql
 DELIMITER //
@@ -595,7 +595,7 @@ DELIMITER ;
 <details>
 <summary><b>직책수정</b></summary>
 <div markdown="1">
-<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/직책관리/근태조회.png">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/직책관리/직책수정.png">
 
 ```sql
 DELIMITER //
@@ -614,7 +614,7 @@ DELIMITER ;
 <details>
 <summary><b>근태기록</b></summary>
 <div markdown="1">
-<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/근태기록.png">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/근태관리/근태기록.PNG">
 
 ```sql
 DELIMITER //
@@ -633,7 +633,7 @@ end
 <details>
 <summary><b>근태조회</b></summary>
 <div markdown="1">
-<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/근태관리/근태조회.png">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/근태관리/근태조회.PNG">
 
 ```sql
 DELIMITER //
@@ -710,7 +710,7 @@ DELIMITER ;
 <details>
 <summary><b>보너스지급</b></summary>
 <div markdown="1">
-<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/보너스관리/보너스지급.png">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/보너스관리/보너스지급.PNG">
 	
 관리자는 직원에게 보너스를 지급할 수 있다.
 
@@ -733,7 +733,7 @@ DELIMITER ;
 <details>
 <summary><b>보너스 지급내역 조회</b></summary>
 <div markdown="1">
-<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/보너스관리/보너스지급내역조회.png">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/보너스관리/보너스지급내역조회.PNG">
 
 
 관리자는 보너스 지급 내역을 조회할 수 있다.
@@ -757,6 +757,9 @@ DELIMITER ;
 <details>
 <summary><b>자격증 등록</b></summary>
 <div markdown="1">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/자격증관리/자격증_등록_성공.png">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/자격증관리/자격증_등록_실패1_동일.png">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/자격증관리/자격증_등록_실패2_없는사원.png">
 
 ```sql
 
@@ -819,6 +822,9 @@ DELIMITER ;
 <details>
 <summary><b>자격증 수정</b></summary>
 <div markdown="1">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/자격증관리/자격증_수정_성공.png">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/자격증관리/자격증_수정_실패1.png">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/자격증관리/자격증_수정_실패2.png">
 
 ```sql
 
@@ -880,6 +886,10 @@ DELIMITER ;
 <details>
 <summary><b>자격증 조회</b></summary>
 <div markdown="1">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/자격증관리/자격증_조회_성공_만료.png">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/자격증관리/자격증_조회_성공_영구.png">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/자격증관리/자격증_조회_성공_영구.png">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/자격증관리/자격증_조회_실패1.png">
 
 ```sql
 1.3) 직원은 자신의 자격증 정보를 조회할 수 있다.
@@ -925,7 +935,7 @@ DELIMITER ;
 <details>
 <summary><b>프로젝트 등록</b></summary>
 <div markdown="1">
-<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/프로젝트관리/프로젝트등록.png">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/프로젝트관리/프로젝트등록.PNG">
 	
 관리자는 프로젝트를 등록할 수 있다.
 
@@ -955,7 +965,7 @@ DELIMITER ;
 <details>
 <summary><b>프로젝트 수정</b></summary>
 <div markdown="1">
-<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/프로젝트관리/프로젝트수정.png">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/프로젝트관리/프로젝트수정.PNG">
 	
 관리자는 프로젝트 정보를 수정할 수 있다.
 
@@ -981,7 +991,7 @@ DELIMITER ;
 <details>
 <summary><b>프로젝트 참여직원 조회</b></summary>
 <div markdown="1">
-<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/프로젝트관리/프로젝트참여직원조회.png">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/프로젝트관리/프로젝트참여직원조회.PNG">
 	
  관리자는 프로젝트에 참여 중인 직원 목록을 조회할 수 있다.
  
@@ -1006,7 +1016,7 @@ DELIMITER ;
 <details>
 <summary><b>참여중인 프로젝트 목록조회</b></summary>
 <div markdown="1">
-<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/프로젝트관리/참여중인프로젝트목록조회.png">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/프로젝트관리/참여중인프로젝트목록조회.PNG">
 	
 직원은 자신이 참여 중인 프로젝트 목록을 조회할 수 있다.
 
@@ -1094,6 +1104,7 @@ DELIMITER ;
 <details>
 <summary><b>휴가 신청내역 조회</b></summary>
 <div markdown="1">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/휴가관리/휴가신청내역조회.PNG">
 
 ```sql
 DELIMITER //
@@ -1117,6 +1128,7 @@ DELIMITER ;
 <details>
 <summary><b>휴가 신청</b></summary>
 <div markdown="1">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/휴가관리/휴가신청.PNG">
 
 ```sql
 DELIMITER //
@@ -1143,6 +1155,7 @@ DELIMITER ;
 <details>
 <summary><b>휴가신청 승인/반려</b></summary>
 <div markdown="1">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/휴가관리/휴가승인관리.PNG">
 
 ```sql
 DELIMITER //
@@ -1176,6 +1189,7 @@ DELIMITER ;
 <details>
 <summary><b>잔여휴가 조회</b></summary>
 <div markdown="1">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/휴가관리/잔여휴가조회.PNG">
 
 ```sql
 DELIMITER //
@@ -1198,7 +1212,7 @@ DELIMITER ;
 <details>
 <summary><b>교육과정등록</b></summary>
 <div markdown="1">
-<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/교육과정관리/교육과정등록.png">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/교육과정관리/교육과정등록.PNG">
 
 ```sql
 DELIMITER //
@@ -1217,7 +1231,7 @@ end
 <details>
 <summary><b>교육과정수정</b></summary>
 <div markdown="1">
-<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/교육과정관리/교육과정수정.png">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/교육과정관리/교육과정수정.PNG">
 
 ```sql
 DELIMITER //
@@ -1239,7 +1253,7 @@ end
 <details>
 <summary><b>교육과정조회</b></summary>
 <div markdown="1">
-<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/교육과정관리/교육과정조회.png">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/교육과정관리/교육과정조회.PNG">
 
 ```sql
 
@@ -1261,7 +1275,10 @@ end
 <summary><b>자산 대여</b></summary>
 <div markdown="1">
 관리자는 회사 자산을 특정 직원에게 대여할 수 있다.
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/자산관리/자산관리_등록_성공.png">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/자산관리/자산관리_등록_실패1.png">
 	
+
 ```sql
 
 DELIMITER $$
@@ -1307,6 +1324,9 @@ DELIMITER ;
 <summary><b>자산 대여 상태 변경</b></summary>
 <div markdown="1">
 관리자는 자산의 대여 상태를 변경할 수 있다.
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/자산관리/자산관리_수정_성공.png">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/자산관리/자산관리_수정_실패1.png">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/자산관리/자산관리_수정_실패2.png">
 
 ```sql
 
@@ -1379,6 +1399,8 @@ DELIMITER ;
 <summary><b>대여 자산 내역 조회</b></summary>
 <div markdown="1">
 직원은 자신이 대여한 자산 내역을 조회 할 수 있다.
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/자산관리/자산관리_조회_성공_미납_반납완료.png">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/자산관리/자산관리_조회_실패.png">
 	
 ```sql
 
@@ -1422,6 +1444,7 @@ DELIMITER ;
 <details>
 <summary><b>가족관계 등록</b></summary>
 <div markdown="1">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/가족관계관리/가족관계등록.PNG">
 
 ```sql
 -- 1.가족 관계 등록 프로시저
@@ -1449,6 +1472,7 @@ DELIMITER ;
 <details>
 <summary><b>가족관계 수정</b></summary>
 <div markdown="1">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/가족관계관리/가족정보수정.PNG">
 
 ```sql
 DELIMITER //
@@ -1478,6 +1502,7 @@ DELIMITER ;
 <details>
 <summary><b>가족관계 조회</b></summary>
 <div markdown="1">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/가족관계관리/가족정보조회_성공.png">
 
 ```sql
 DELIMITER //
@@ -1508,6 +1533,7 @@ DELIMITER ;
 <details>
 <summary><b>자신의 가족관계 조회</b></summary>
 <div markdown="1">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/가족관계관리/특정직원 가족관계조회.png">
 
 ```sql
 DELIMITER //
@@ -1531,6 +1557,7 @@ DELIMITER ;
 <details>
 <summary><b>파견 이력 등록</b></summary>
 <div markdown="1">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/파견이력관리/파견이력등록.PNG">
 
 ```sql
 
@@ -1553,6 +1580,7 @@ DELIMITER ;
 <details>
 <summary><b>파견 이력 조회</b></summary>
 <div markdown="1">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/파견이력관리/파견이력조회.PNG">
 
 ```sql
 DELIMITER //
@@ -1571,6 +1599,7 @@ end
 <details>
 <summary><b>파견 이력 수정</b></summary>
 <div markdown="1">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/파견이력관리/파견이력수정.PNG">
 
 ```sql
 DELIMITER //
