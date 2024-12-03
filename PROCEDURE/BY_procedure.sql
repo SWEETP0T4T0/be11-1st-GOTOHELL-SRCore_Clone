@@ -65,13 +65,24 @@ DELIMITER ;
 
 -- 프로젝트수정
 DELIMITER //
-CREATE PROCEDURE UpdateProjectName(
+CREATE PROCEDURE UpdateProjectDetails(
     IN project_id INT,
-    IN new_project_name VARCHAR(255)
+    IN new_project_name VARCHAR(255),
+    IN new_start_date DATE,
+    IN new_end_date DATE,
+    IN new_responsibility VARCHAR(255),
+    IN new_role VARCHAR(255),
+    IN new_salary DECIMAL(10, 2)
 )
 BEGIN
     UPDATE Projects
-    SET ProjectName = new_project_name
+    SET 
+        ProjectName = new_project_name,
+        StartDate = new_start_date,
+        EndDate = new_end_date,
+        Responsibility = new_responsibility,
+        Role = new_role,
+        Salary = new_salary
     WHERE ProjectID = project_id;
 END;
 //
@@ -216,23 +227,27 @@ CALL RegisterFamily(2, '자녀', '홍길순', '2015-06-10', '010-5678-1234');
 CALL RegisterFamily(3, '부모님', '박철수', '1965-12-01', '010-4567-8901');
 
 -- 2.가족 정보 수정 프로시저
+-- 가족 정보 수정 프로시저 (생년월일 포함)
 DELIMITER //
 CREATE PROCEDURE UpdateFamily(
     IN p_FamilyID INT,
     IN p_FamilyMemberName VARCHAR(255),
-    IN p_ContactNumber VARCHAR(15)
+    IN p_ContactNumber VARCHAR(15),
+    IN p_BirthDate DATE
 )
 BEGIN
     UPDATE Families
-    SET FamilyMemberName = p_FamilyMemberName, ContactNumber = p_ContactNumber
+    SET 
+        FamilyMemberName = p_FamilyMemberName,
+        ContactNumber = p_ContactNumber,
+        BirthDate = p_BirthDate
     WHERE FamilyID = p_FamilyID;
 END;
 //
 DELIMITER ;
 
 answer
-CALL UpdateFamily(1, '김영희', '010-9876-5432');
-CALL UpdateFamily(2, '홍길순', '010-3456-7890');
+CALL UpdateFamily(1, '김영희', '010-9876-5432', '2015-06-10');
 
 
 -- 3.특정 직원의 가족 관계 조회 프로시저
@@ -241,7 +256,15 @@ CREATE PROCEDURE GetEmployeeFamily(
     IN p_DetailID INT
 )
 BEGIN
-    SELECT * FROM Families WHERE DetailID = p_DetailID;
+    SELECT 
+        FamilyID,
+        DetailID,
+        Relationship,
+        FamilyMemberName,
+        BirthDate,
+        ContactNumber
+    FROM Families 
+    WHERE DetailID = p_DetailID;
 END;
 //
 DELIMITER ;
@@ -275,7 +298,6 @@ CALL GetOwnFamily(3);
 
 -- 1. 파견 이력 등록 프로시저
 DELIMITER //
-
 CREATE PROCEDURE RegisterDispatchAndUpdateProjectWithBonus (
     IN emp_id INT,
     IN dispatch_start DATE,
