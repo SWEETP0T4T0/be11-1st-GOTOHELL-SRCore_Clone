@@ -1,7 +1,7 @@
 # be11-1st-GOTOHELL-HRCore
 
 <div align="center">
-<img width="1280" alt="배너 이미지" src="https://raw.githubusercontent.com/2ma1995/be11-1st-GOTOHELL-HRCore/main/img/banner.png">
+<img width="1280" alt="배너 이미지" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/banner.png">
 </div>
 
   
