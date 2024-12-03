@@ -545,23 +545,6 @@ DELIMITER ;
 
 
 <details>
-<summary><b>부서삭제</b></summary>
-<div markdown="1">
-
-```sql
-DELIMITER //
-CREATE PROCEDURE 부서삭제(in inid int)
-begin
-    delete from Departments where DepartmentId=inid;
-end;
-//
-DELIMITER ;
-```
-
-</div>
-</details>
-
-<details>
 <summary><b>부서인원조회</b></summary>
 <div markdown="1">
 
@@ -609,24 +592,6 @@ DELIMITER //
 CREATE PROCEDURE 직책수정(in inid int, in po_name_input varchar(255))
 begin
     update positions set positionName=po_name_input where positionId=inid;
-end;
-//
-DELIMITER ;
-```
-
-</div>
-</details>
-
-
-<details>
-<summary><b>직책삭제</b></summary>
-<div markdown="1">
-
-```sql
-DELIMITER //
-CREATE PROCEDURE 직책삭제(in inid int)
-begin
-    delete from positions where positionId=inid;
 end;
 //
 DELIMITER ;
