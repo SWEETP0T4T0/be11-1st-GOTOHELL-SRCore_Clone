@@ -92,7 +92,7 @@ DELIMITER //
 create procedure 교육과정등록(in inemployeeid int(11), in inCoursename varchar(255), in instartdate date, in inenddate date)
 begin
 	insert into employeeeducation (employeeid, Coursename, startdate, enddate) 
-    values(inemployeeid , inCoursename , startdate, enddate);
+    values(inemployeeid , inCoursename , instartdate, inenddate);
 end
 // DELIMITER ;
 
