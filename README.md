@@ -1414,11 +1414,11 @@ DELIMITER ;
 직원은 자신이 대여한 자산 내역을 조회 할 수 있다.
 <br/>성공사례
 <div>
-<img width="300" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/자산관리/자산관리_조회_성공_미납_반납완료.png">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/자산관리/자산관리_조회_성공_미납_반납완료.png">
 </div>
 실폐사례
 <div>
-<img width="300" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/자산관리/자산관리_조회_실패.png">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/자산관리/자산관리_조회_실패.png">
 </div>
 
 ```sql
