@@ -1092,58 +1092,107 @@ DELIMITER ;
 
 
 <details>
-<summary><b>제목</b></summary>
+<summary><b>휴가 신청내역 조회</b></summary>
 <div markdown="1">
 
 ```sql
-
+DELIMITER //
+CREATE PROCEDURE GetEmployeeHolidays(
+    IN emp_id INT
+)
+BEGIN
+    SELECT * 
+    FROM Holidays 
+    WHERE EmployeeID = emp_id;
+END;
+//
+DELIMITER ;
 ```
 
 </div>
 </details>
-
 
 
 
 <details>
-<summary><b>제목</b></summary>
+<summary><b>휴가 신청</b></summary>
 <div markdown="1">
 
 ```sql
-
+DELIMITER //
+CREATE PROCEDURE InsertHoliday(
+    IN emp_id INT,
+    IN holiday_type VARCHAR(255),
+    IN start_date DATE,
+    IN end_date DATE
+)
+BEGIN
+	declare remain_hol int default (select remainingdays from holidays where employeeid=emp_id);
+    INSERT INTO Holidays (EmployeeID, HolidayType, StartDate, EndDate, RemainingDays)
+    VALUES (emp_id, holiday_type, start_date, end_date, remain_hol);
+END;
+//
+DELIMITER ;
 ```
 
 </div>
 </details>
-
 
 
 
 <details>
-<summary><b>제목</b></summary>
+<summary><b>휴가신청 승인/반려</b></summary>
 <div markdown="1">
 
 ```sql
+DELIMITER //
 
+CREATE PROCEDURE UpdateHolidayApproval(
+    IN holiday_id INT,
+    IN approval_status ENUM('승인', '대기')
+)
+BEGIN
+    UPDATE Holidays
+    SET ApprovalStatus = approval_status
+    WHERE HolidayID = holiday_id;
+
+IF approval_status = '승인' THEN
+        UPDATE Employees e
+        JOIN Holidays h ON e.EmployeeID = h.EmployeeID
+        SET h.RemainingDays = h.RemainingDays - DATEDIFF(h.EndDate, h.StartDate) + 1
+        WHERE h.HolidayID = holiday_id;
+    END IF;
+END;
+//
+
+DELIMITER ;
 ```
 
 </div>
 </details>
-
 
 
 
 <details>
-<summary><b>제목</b></summary>
+<summary><b>잔여휴가 조회</b></summary>
 <div markdown="1">
 
 ```sql
-
+DELIMITER //
+CREATE PROCEDURE GetRemainHolidays(
+    IN emp_id INT
+)
+BEGIN
+    SELECT EmployeeID, RemainingDays
+    FROM Holidays
+    WHERE EmployeeID = emp_id;
+END;
+//
+DELIMITER ;
 ```
 
 </div>
 </details>
-
 
 
 <details>
@@ -1153,19 +1202,12 @@ DELIMITER ;
 
 ```sql
 DELIMITER //
-CREATE PROCEDURE 교육과정등록(
-    IN inemployeeid INT,
-    IN inCoursename VARCHAR(255),
-    IN instartdate DATE,
-    IN inenddate DATE
-)
-BEGIN
-    INSERT INTO employeeeducation (employeeid, Coursename, startdate, enddate)
-    VALUES (inemployeeid, inCoursename, instartdate, inenddate);
-END;
-//
-DELIMITER;
-
+create procedure 교육과정등록(in inemployeeid int(11), in inCoursename varchar(255), in instartdate date, in inenddate date)
+begin
+	insert into employeeeducation (employeeid, Coursename, startdate, enddate) 
+    values(inemployeeid , inCoursename , instartdate, inenddate);
+end
+// DELIMITER ;
 ```
 
 <details>
@@ -1174,7 +1216,15 @@ DELIMITER;
 <img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/교육과정관리/교육과정수정.PNG">
 
 ```sql
-
+DELIMITER //
+create procedure 교육과정수정(in inemployeeid int(11), in ineducationid int(11), in inCoursename varchar(255), 
+in instartdate date, in inenddate date)
+begin
+	update employeeeducation set employeeid=inemployeeid, Coursename=inCoursename, 
+    startdate=instartdate, enddate=inenddate
+    where ineducationid=educationid;
+end
+// DELIMITER ;
 ```
 
 </div>
