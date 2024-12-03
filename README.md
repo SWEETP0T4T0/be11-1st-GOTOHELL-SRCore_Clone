@@ -1254,11 +1254,44 @@ end
 
 
 <details>
-<summary><b>제목</b></summary>
+<summary><b>자산 대여</b></summary>
 <div markdown="1">
-
+관리자는 회사 자산을 특정 직원에게 대여할 수 있다.
+	
 ```sql
 
+DELIMITER $$
+
+CREATE PROCEDURE AddRent (
+    IN p_EmployeeID INT,
+    IN p_AssetName VARCHAR(255),
+    IN p_Quantity INT,
+    IN p_RentStartDate DATE,
+    IN p_RentEndDate VARCHAR(255),
+    IN p_AssetStatus ENUM('정상', '손상')
+)
+BEGIN
+    DECLARE v_RentEndDate DATE;
+    SET v_RentEndDate = CASE
+		WHEN p_RentEndDate IS NULL or p_RentEndDate = '' THEN NULL
+        ELSE STR_TO_DATE(p_RentEndDate, '%Y-%m-%d')
+    END;
+    IF NOT EXISTS (
+        SELECT 1
+        FROM Employees
+        WHERE EmployeeID = p_EmployeeID
+    ) THEN
+    SIGNAL SQLSTATE '45000'
+    SET MESSAGE_TEXT = '해당 직원 정보를 찾을 수 없습니다';
+    END IF;
+    
+    INSERT INTO Rents (EmployeeID, AssetName, Quantity, RentStartDate, RentEndDate, AssetStatus)
+    VALUES (p_EmployeeID, p_AssetName, p_Quantity, p_RentStartDate, v_RentEndDate, p_AssetStatus);
+    
+    SELECT LAST_INSERT_ID() AS NewRent, '성공적으로 기록 되었습니다.' as RESULTMESSAGE;
+END$$
+
+DELIMITER ;
 ```
 
 </div>
@@ -1267,11 +1300,70 @@ end
 
 
 <details>
-<summary><b>제목</b></summary>
+<summary><b>자산 대여 상태 변경</b></summary>
 <div markdown="1">
+관리자는 자산의 대여 상태를 변경할 수 있다.
 
 ```sql
 
+
+DELIMITER //
+
+CREATE PROCEDURE UpdateRentStatus(
+    IN p_RentID INT,
+    IN p_employeeID INT,
+    IN p_AssetName VARCHAR(255),
+    IN p_Quantity INT,
+    IN p_RentStartDate DATE,
+    IN P_RentEndDate VARCHAR(255),
+    IN p_AssetStatus ENUM('정상', '손상')
+    
+)
+BEGIN
+	DECLARE v_RentEndDate DATE;
+    SET v_RentEndDate = CASE
+		WHEN p_RentEndDate IS NULL OR p_RentEndDate = '' THEN NULL
+        ELSE STR_TO_DATE(p_RentEndDate, '%Y-%m-%d')
+	End;
+    
+    IF NOT EXISTS(
+    SELECT 1
+    FROM RENTS
+    WHERE RentID=p_RentID)
+    THEN SIGNAL SQLSTATE '45000'
+    SET MESSAGE_TEXT = '해당 대여 정보를 찾을 수 없습니다.';
+    END IF;
+    
+    IF EXISTS(
+    SELECT 1
+    FROM Rents
+    WHERE EmployeeID=p_EmployeeID
+    AND AssetName = p_AssetName
+    AND Quantity = p_Quantity
+    AND RentStartDate = p_RentStartDate
+    AND RentEndDate = v_RentEndDate
+    AND AssetStatus = p_AssetStatus)
+    THEN 
+    SIGNAL SQLSTATE '45000'
+    SET MESSAGE_TEXT = '동일 기록이 이미 존재합니다.';
+    END IF;
+    
+    UPDATE Rents
+    SET EmployeeID=p_EmployeeID,
+    AssetName = p_AssetName,
+    Quantity = p_Quantity,
+    RentStartDate = p_RentStartDate,
+    RentEndDate = v_RentEndDate,
+    AssetStatus = p_AssetStatus
+    WHERE RentID = p_RentID;
+
+    SELECT p_EmployeeID as EmployeeID, p_AssetName as AssetName, p_Quantity as Quantity, p_RentStartDate as RentStartDate,
+           p_RentEndDate as RentEndDate, p_AssetStatus as AssetStatus, '성공적으로 수정 되었습니다' as ResultMessage
+    
+END;
+//
+
+DELIMITER ;
 ```
 
 </div>
@@ -1280,11 +1372,42 @@ end
 
 
 <details>
-<summary><b>제목</b></summary>
+<summary><b>대여 자산 내역 조회</b></summary>
 <div markdown="1">
-
+직원은 자신이 대여한 자산 내역을 조회 할 수 있다.
+	
 ```sql
 
+
+DELIMITER $$
+CREATE PROCEDURE GETRents(
+	IN p_EmployeeID INT
+    )
+BEGIN
+	IF NOT EXISTS(
+    SELECT 1
+    FROM Rents
+    WHERE EmployeeID = p_EmployeeID
+    ) THEN
+    SIGNAL SQLSTATE '45000'
+    SET MESSAGE_TEXT = '해당 직원 정보를 찾을 수 없습니다.';
+END IF;
+
+SELECT 
+	EmployeeID,
+    AssetName,
+    Quantity,
+    RentStartDate,
+    AssetStatus,
+    CASE
+		WHEN RentEndDate IS NULL THEN '미납'
+        ELSE '반납완료'
+	END as RentStatus
+    FROM Rents
+    WHERE EmployeeID = p_EmployeeID
+    ORDER BY RentID ASC;
+END$$
+DELIMITER ;
 ```
 
 </div>
@@ -1293,11 +1416,25 @@ end
 
 
 <details>
-<summary><b>제목</b></summary>
+<summary><b>가족관계 등록</b></summary>
 <div markdown="1">
 
 ```sql
-
+-- 1.가족 관계 등록 프로시저
+DELIMITER //
+CREATE PROCEDURE RegisterFamily(
+    IN p_DetailID INT,
+    IN p_Relationship VARCHAR(255),
+    IN p_FamilyMemberName VARCHAR(255),
+    IN p_BirthDate DATE,
+    IN p_ContactNumber VARCHAR(15)
+)
+BEGIN
+    INSERT INTO Families (DetailID, Relationship, FamilyMemberName, BirthDate, ContactNumber)
+    VALUES (p_DetailID, p_Relationship, p_FamilyMemberName, p_BirthDate, p_ContactNumber);
+END;
+//
+DELIMITER ;
 ```
 
 </div>
@@ -1306,13 +1443,143 @@ end
 
 
 <details>
-<summary><b>제목</b></summary>
+<summary><b>가족관계 수정</b></summary>
 <div markdown="1">
 
 ```sql
-
+DELIMITER //
+CREATE PROCEDURE UpdateFamily(
+    IN p_FamilyID INT,
+    IN p_FamilyMemberName VARCHAR(255),
+    IN p_ContactNumber VARCHAR(15),
+    IN p_BirthDate DATE
+)
+BEGIN
+    UPDATE Families
+    SET 
+        FamilyMemberName = p_FamilyMemberName,
+        ContactNumber = p_ContactNumber,
+        BirthDate = p_BirthDate
+    WHERE FamilyID = p_FamilyID;
+END;
+//
+DELIMITER ;
 ```
 
 </div>
 </details>
 
+
+
+<details>
+<summary><b>가족관계 조회</b></summary>
+<div markdown="1">
+
+```sql
+DELIMITER //
+CREATE PROCEDURE GetEmployeeFamily(
+    IN p_DetailID INT
+)
+BEGIN
+    SELECT 
+        FamilyID,
+        DetailID,
+        Relationship,
+        FamilyMemberName,
+        BirthDate,
+        ContactNumber
+    FROM Families 
+    WHERE DetailID = p_DetailID;
+END;
+//
+DELIMITER ;
+```
+
+</div>
+</details>
+
+
+
+
+<details>
+<summary><b>자신의 가족관계 조회</b></summary>
+<div markdown="1">
+
+```sql
+DELIMITER //
+CREATE PROCEDURE GetOwnFamily(
+    IN p_DetailID INT
+)
+BEGIN
+    SELECT FamilyMemberName, Relationship, BirthDate
+    FROM Families
+    WHERE DetailID = p_DetailID;
+END;
+//
+DELIMITER ;
+```
+
+</div>
+</details>
+
+
+
+<details>
+<summary><b>파견 이력 등록</b></summary>
+<div markdown="1">
+
+```sql
+
+DELIMITER //
+CREATE PROCEDURE 파견이력등록(in inemployeeid int(11), in inDispatchStartDate date, in inDispatchEndDate date,
+ in inDispatchRole varchar(255), in inSalary decimal(10,2))
+begin
+	INSERT INTO DispatchDetails (EmployeeID, DispatchStartDate, DispatchEndDate,DispatchRole, Salary)
+VALUES (inemployeeid, inDispatchStartDate, inDispatchEndDate, inDispatchRole, inSalary);
+end;
+//
+DELIMITER ;
+```
+
+</div>
+</details>
+
+
+
+<details>
+<summary><b>파견 이력 조회</b></summary>
+<div markdown="1">
+
+```sql
+DELIMITER //
+create procedure 파견이력조회(in inemployeeid int(11))
+begin
+	select * from DispatchDetails where inemployeeid=employeeid;
+end
+// DELIMITER ; 
+```
+
+</div>
+</details>
+
+
+
+<details>
+<summary><b>파견 이력 수정</b></summary>
+<div markdown="1">
+
+```sql
+DELIMITER //
+create procedure 파견이력수정(in indispatchid int(11), in inemployeeid int(11), in inDispatchStartDate date, in inDispatchEndDate date,
+ in inDispatchRole varchar(255), in inSalary decimal(10,2))
+begin
+	update DispatchDetails set employeeid=inemployeeid, DispatchStartDate=inDispatchStartDate, 
+    DispatchEndDate=inDispatchEndDate, DispatchRole=inDispatchRole, Salary=inSalary
+    where dispatchid=indispatchid;
+end
+// DELIMITER ;
+
+```
+
+</div>
+</details>
