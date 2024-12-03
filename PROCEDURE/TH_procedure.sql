@@ -46,12 +46,12 @@ BEGIN
         v_ExpiryDate
     );
 
-    SELECT LAST_INSERT_ID() AS NewQualificationID, 
+    SELECT p_DetailID as EmployeeId, p_QualificationName as QualificationName, p_IssueDate as IssueDate, p_ExpiryDate as ExpiryDate, 
            '자격증이 성공적으로 추가되었습니다.' AS ResultMessage;
 END $$
 DELIMITER ;
 
-
+ 
 1.2) 관리자는 직원의 자격증 정보를 수정할 수 있다.
 DELIMITER $$
 CREATE PROCEDURE UpdateQualification (
