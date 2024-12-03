@@ -16,14 +16,6 @@ end;
 //
 DELIMITER ;
 
--- 부서삭제
-DELIMITER //
-CREATE PROCEDURE 부서삭제(in inid int)
-begin
-    delete from Departments where DepartmentId=inid;
-end;
-//
-DELIMITER ;
 
 --  부서인원조회
 DELIMITER //
@@ -55,14 +47,6 @@ end;
 //
 DELIMITER ;
 
--- 직책삭제
-DELIMITER //
-CREATE PROCEDURE 직책삭제(in inid int)
-begin
-    delete from positions where positionId=inid;
-end;
-//
-DELIMITER ;
 
 -- 급여등록
 DELIMITER //
