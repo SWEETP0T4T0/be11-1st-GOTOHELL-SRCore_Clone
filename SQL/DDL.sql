@@ -95,7 +95,7 @@ CREATE TABLE Holidays (
     StartDate DATE NOT NULL,
     EndDate DATE NOT NULL,
     RemainingDays INT NOT NULL,
-    ApprovalStatus ENUM('승인', '대기') NOT NULL,
+    ApprovalStatus ENUM('승인', '대기') default '대기' NOT NULL,
     FOREIGN KEY (EmployeeID) REFERENCES Employees(EmployeeID)
 );
 CREATE TABLE Rents (
