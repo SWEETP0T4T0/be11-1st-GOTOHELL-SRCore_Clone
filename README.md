@@ -834,8 +834,10 @@ DELIMITER ;
 <summary><b>자격증 수정</b></summary>
 <div markdown="1">
 </br>
-성공
+성공사례
+<div>
 <img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/자격증관리/자격증_수정_성공.png">
+</div>
 실폐사례
 <div>
 <img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/자격증관리/자격증_수정_실패1.png">
