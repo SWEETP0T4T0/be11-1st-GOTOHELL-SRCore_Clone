@@ -763,11 +763,11 @@ DELIMITER ;
 <div>
 <img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/자격증관리/자격증_등록_성공.png">
 </div>
-실폐사례
+실패사례
 <div>
 <img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/자격증관리/자격증_등록_실패1_동일.png">
 </div>
-실폐사례
+실패사례
 <div>
 <img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/자격증관리/자격증_등록_실패2_없는사원.png">
 </div>
@@ -838,11 +838,11 @@ DELIMITER ;
 <div>
 <img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/자격증관리/자격증_수정_성공.png">
 </div>
-실폐사례
+실패사례
 <div>
 <img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/자격증관리/자격증_수정_실패1.png">
 </div>
-실폐사례
+실패사례
 <div>
 <img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/자격증관리/자격증_수정_실패2.png">
 </div>
@@ -916,11 +916,11 @@ DELIMITER ;
 <div>
 <img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/자격증관리/자격증_조회_성공_영구.png">
 </div>
-성공 영구상황
+성공 유효상황
 <div>
-<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/자격증관리/자격증_조회_성공_영구.png">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/자격증관리/자격증_조회_성공_유효.png">
 </div>
-실폐사례
+실패사례
 <div>
 <img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/자격증관리/자격증_조회_실패1.png">
 </div>
@@ -1451,7 +1451,7 @@ DELIMITER ;
 <div>
 <img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/자산관리/자산관리_조회_성공_미납_반납완료.png">
 </div>
-실폐사례
+실패사례
 <div>
 <img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/자산관리/자산관리_조회_실패.png">
 </div>
