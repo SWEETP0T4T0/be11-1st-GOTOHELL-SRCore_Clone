@@ -110,7 +110,6 @@ CREATE PROCEDURE GetEmployeeQualifications (
     IN p_DetailID INT
 )
 BEGIN
-    -- 해당 직원 존재 여부 확인
     IF NOT EXISTS (
         SELECT 1 
         FROM EmployeeDetails 
@@ -120,7 +119,6 @@ BEGIN
         SET MESSAGE_TEXT = '해당 직원 정보를 찾을 수 없습니다.';
     END IF;
 
-    -- 자격증 조회
     SELECT 
         QualificationID,
         QualificationName,
@@ -138,13 +136,6 @@ BEGIN
     ORDER BY 
         IssueDate DESC;
 
-    -- 총 자격증 개수 반환
-    SELECT 
-        COUNT(*) AS TotalQualifications
-    FROM 
-        Qualifications
-    WHERE 
-        DetailID = p_DetailID;
 END $$
 DELIMITER ;
 
@@ -263,9 +254,7 @@ SELECT
     WHERE EmployeeID = p_EmployeeID
     ORDER BY RentID ASC;
     
-    SELECT COUNT(EmployeeID = (
-    Select * from Rents
-    WHERE Employee = p_EmployeeID)) AS TotalRents, Rents.*
+    SELECT Rents.*
     FROM Rents
     WHERE EmployeeID = p_EmployeeID;
 END$$
