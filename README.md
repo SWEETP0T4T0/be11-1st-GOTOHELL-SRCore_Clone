@@ -86,9 +86,9 @@
 
 <div>
 <img width="638" alt="notion1" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/notion1.png">
-<img width="642" alt="notion2" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/notion2.png">
-<img width="642" alt="notion3" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/notion3.png">
-<img width="642" alt="notion4" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/notion4.png">
+<img width="638" alt="notion2" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/notion2.png">
+<img width="638" alt="notion3" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/notion3.png">
+<img width="638" alt="notion4" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/notion4.png">
 
 </div>
 
@@ -98,7 +98,7 @@
 
  [ERD 클라우드에서 보기](https://www.erdcloud.com/d/J7u5N3hicwNBGPTwc)
  
-![music-streaming-erd](https://github.com/beyond-sw-camp/be07_1st_1team_Moosic/assets/64718002/a72d3657-f8e8-47fb-aa14-17f096ff3152)
+![music-streaming-erd](https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/GOTOHELL_HRCORE.png)
 
 
 ---
@@ -607,6 +607,8 @@ DELIMITER ;
 <details>
 <summary><b>근태기록</b></summary>
 <div markdown="1">
+<img width="600" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/근태기록.PNG">
+
 
 ```sql
 DELIMITER //
