@@ -1274,12 +1274,13 @@ end
 <summary><b>자산 대여</b></summary>
 <div markdown="1">
 관리자는 회사 자산을 특정 직원에게 대여할 수 있다.
-<div>
+<br/>
 성공사례
+<div>
 <img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/자산관리/자산관리_등록_성공.png">
 </div>
-<div>
 실패사례
+<div>
 <img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/자산관리/자산관리_등록_실패1.png">
 </div>
 
@@ -1331,12 +1332,12 @@ DELIMITER ;
 <div>
 <img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/자산관리/자산관리_수정_성공.png">
 </div>
-<div>
 실패사례
+<div>
 <img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/자산관리/자산관리_수정_실패1.png"> 
 </div>
-<div>
 실패사례
+<div>
 <img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/자산관리/자산관리_수정_실패2.png">
 </div>
 
@@ -1411,10 +1412,15 @@ DELIMITER ;
 <summary><b>대여 자산 내역 조회</b></summary>
 <div markdown="1">
 직원은 자신이 대여한 자산 내역을 조회 할 수 있다.
-
+<br/>성공사례
+<div>
 <img width="300" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/자산관리/자산관리_조회_성공_미납_반납완료.png">
+</div>
+실폐사례
+<div>
 <img width="300" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/자산관리/자산관리_조회_실패.png">
-	
+</div>
+
 ```sql
 
 
