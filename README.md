@@ -1076,6 +1076,61 @@ DELIMITER ;
 
 
 <details>
+<summary><b>제목</b></summary>
+<div markdown="1">
+
+```sql
+
+```
+
+</div>
+</details>
+
+
+
+
+<details>
+<summary><b>제목</b></summary>
+<div markdown="1">
+
+```sql
+
+```
+
+</div>
+</details>
+
+
+
+
+<details>
+<summary><b>제목</b></summary>
+<div markdown="1">
+
+```sql
+
+```
+
+</div>
+</details>
+
+
+
+
+<details>
+<summary><b>제목</b></summary>
+<div markdown="1">
+
+```sql
+
+```
+
+</div>
+</details>
+
+
+
+<details>
 <summary><b>교육과정등록</b></summary>
 <div markdown="1">
 <img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/교육과정관리/교육과정등록.PNG">
