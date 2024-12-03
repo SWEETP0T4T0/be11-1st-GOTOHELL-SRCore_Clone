@@ -1,9 +1,11 @@
--- 보너스지급
+-- 성과급지급
+
+
 DELIMITER //
-CREATE PROCEDURE UpdateEmployeeBonus(IN em_id INT, IN new_bonus DECIMAL(10, 2))
+CREATE PROCEDURE UpdateEmployeeBonus(IN em_id INT, IN additional_bonus DECIMAL(10, 2))
 BEGIN
     UPDATE Payments
-    SET Bonus = new_bonus
+    SET Bonus = COALESCE(Bonus, 0) + additional_bonus
     WHERE EmployeeID = em_id;
 END;
 //
@@ -11,11 +13,29 @@ DELIMITER ;
 
 -- 보너스지급내역조회
 DELIMITER //
-CREATE PROCEDURE GetBonusDetails(IN min_bonus DECIMAL(10, 2))
+CREATE PROCEDURE GetBonusDetailsWithSalariesByID(IN emp_id INT)
 BEGIN
-    SELECT EmployeeID, Bonus
-    FROM Payments
-    WHERE Bonus > min_bonus;
+    SELECT 
+        p.EmployeeID,
+        ed.Name AS EmployeeName,
+        COALESCE(p.Bonus, 0) AS CurrentBonus,
+        COALESCE(SUM(pr.Salary), 0) AS ProjectSalary,
+        COALESCE(SUM(dd.Salary), 0) AS DispatchSalary,
+        COALESCE(p.Bonus, 0) + COALESCE(SUM(pr.Salary), 0) + COALESCE(SUM(dd.Salary), 0) AS TotalBonus
+    FROM 
+        Payments p
+    LEFT JOIN 
+        Employees e ON p.EmployeeID = e.EmployeeID
+    LEFT JOIN 
+        EmployeeDetails ed ON e.DetailID = ed.DetailID
+    LEFT JOIN 
+        Projects pr ON p.EmployeeID = pr.EmployeeID
+    LEFT JOIN 
+        DispatchDetails dd ON p.EmployeeID = dd.EmployeeID
+    WHERE 
+        p.EmployeeID = emp_id
+    GROUP BY 
+        p.EmployeeID, ed.Name, p.Bonus;
 END;
 //
 DELIMITER ;
