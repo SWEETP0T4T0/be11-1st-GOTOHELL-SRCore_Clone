@@ -50,7 +50,7 @@ DELIMITER ;
 
 -- 급여등록
 DELIMITER //
-CREATE PROCEDURE 급여등록(in em_id int, in pre_pay int, in cur_pay int, in pre_bo int)
+CREATE PROCEDURE 급여등록(in em_id int, in pre_pay decimal(10,2), in cur_pay decimal(10,2), in pre_bo decimal(10,2))
 begin
 	INSERT INTO Payments (EmployeeID, PreviousSalary, CurrentSalary, Bonus)
 VALUES (em_id, pre_pay ,cur_pay, pre_bo);
@@ -60,9 +60,9 @@ DELIMITER ;
 
 -- 급여수정
 DELIMITER //
-CREATE PROCEDURE 급여수정(in em_id int, in pre_pay int, in cur_pay int, in pre_bo int)
+CREATE PROCEDURE 급여수정(in em_id int, in pre_pay decimal(10,2), in cur_pay decimal(10,2), in pre_bo decimal(10,2))
 begin
-    update payments set EmpoyeeID = em_id, PreviousSalary = pre_pay, CurrentSalary = cur_pay, Bonus = pre_bo where 직원id = em_id;
+    update payments set EmployeeID = em_id, PreviousSalary = pre_pay, CurrentSalary = cur_pay, Bonus = pre_bo where EmployeeId = em_id;
 end;
 //
 DELIMITER ;
