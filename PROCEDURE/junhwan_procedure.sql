@@ -114,3 +114,23 @@ begin
 	select * from employeeeducation where inemployeeid=employeeid;
 end
 // DELIMITER ; 
+
+
+-- 파견 이력 조회
+DELIMITER //
+create procedure 파견이력조회(in inemployeeid int(11))
+begin
+	select * from DispatchDetails where inemployeeid=employeeid;
+end
+// DELIMITER ; 
+
+-- 파견 이력 수정
+DELIMITER //
+create procedure 파견이력수정(in inemployeeid int(11), in inDispatchStartDate date, in inDispatchEndDate date,
+ in inDispatchRole varchar(255), in inSalary decimal(10,2))
+begin
+	update DispatchDetails set employeeid=inemployeeid, DispatchStartDate=inDispatchStartDate, 
+    DispatchEndDate=inDispatchEndDate, DispatchRole=inDispatchRole, Salary=inSalary
+    where inemployeeid=employeeid;
+end
+// DELIMITER ;
