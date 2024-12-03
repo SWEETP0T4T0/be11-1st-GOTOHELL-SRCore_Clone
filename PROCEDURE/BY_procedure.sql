@@ -67,6 +67,7 @@ DELIMITER ;
 DELIMITER //
 CREATE PROCEDURE UpdateProjectDetails(
     IN project_id INT,
+    IN employee_id INT,
     IN new_project_name VARCHAR(255),
     IN new_start_date DATE,
     IN new_end_date DATE,
@@ -78,6 +79,7 @@ BEGIN
     UPDATE Projects
     SET 
         ProjectName = new_project_name,
+        employeeid = employee_id,
         StartDate = new_start_date,
         EndDate = new_end_date,
         Responsibility = new_responsibility,
@@ -91,12 +93,12 @@ DELIMITER ;
 -- 프로젝트참여직원조회
 DELIMITER //
 CREATE PROCEDURE GetProjectParticipants(
-    IN project_id INT
+    IN project_name varchar(255)
 )
 BEGIN
-    SELECT EmployeeID, Role 
+    SELECT EmployeeID, Projectname, Role 
     FROM Projects 
-    WHERE ProjectID = project_id;
+    WHERE Projectname = project_name;
 END;
 //
 DELIMITER ;
