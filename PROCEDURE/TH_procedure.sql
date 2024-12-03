@@ -15,7 +15,15 @@ BEGIN
         ELSE STR_TO_DATE(p_ExpiryDate, '%Y-%m-%d')
     END;
 
-    -- 중복 자격증 체크
+    IF NOT EXISTS(
+        SELECT 1
+        FROM Employees
+        WHERE EmployeeID = DetailID
+    ) THEN
+        SIGNAL SQLSTATE '45000' 
+        SET MESSAGE_TEXT = '해당 직원 정보를 찾을 수 없습니다.';
+    END IF;
+    
     IF EXISTS (
         SELECT 1 
         FROM Qualifications 
