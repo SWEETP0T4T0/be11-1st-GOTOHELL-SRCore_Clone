@@ -908,21 +908,23 @@ DELIMITER ;
 <summary><b>교육과정등록</b></summary>
 <div markdown="1">
 <img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/교육과정등록.PNG">
-``sql
 
+```sql
 DELIMITER //
-create procedure 교육과정등록(in inemployeeid int(11), in inCoursename varchar(255), in instartdate date, in inenddate date)
-begin
-	insert into employeeeducation (employeeid, Coursename, startdate, enddate) 
-    values(inemployeeid , inCoursename , instartdate, inenddate);
-end
-// DELIMITER; 
+CREATE PROCEDURE 교육과정등록(
+    IN inemployeeid INT,
+    IN inCoursename VARCHAR(255),
+    IN instartdate DATE,
+    IN inenddate DATE
+)
+BEGIN
+    INSERT INTO employeeeducation (employeeid, Coursename, startdate, enddate)
+    VALUES (inemployeeid, inCoursename, instartdate, inenddate);
+END;
+//
+DELIMITER;
 
-``
-
-</div>
-</details>
-
+```
 
 <details>
 <summary><b>교육과정수정</b></summary>
