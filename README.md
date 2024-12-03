@@ -1031,7 +1031,7 @@ DELIMITER ;
 <details>
 <summary><b>인사평가등록</b></summary>
 <div markdown="1">
-<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/인사평가/인사평가등록.PNG">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/인사평가/인사평가등록.png">
 
 
 ```sql
@@ -1052,7 +1052,7 @@ DELIMITER ;
 <details>
 <summary><b>인사평가수정</b></summary>
 <div markdown="1">
-<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/인사평가/인사평가수정.PNG">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/인사평가/인사평가수정.png">
 
 
 ```sql
@@ -1074,7 +1074,7 @@ DELIMITER ;
 <details>
 <summary><b>인사평가조회</b></summary>
 <div markdown="1">
-<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/인사평가/인사평가조회.PNG">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/인사평가/인사평가조회.png">
 
 ```sql
 DELIMITER //
