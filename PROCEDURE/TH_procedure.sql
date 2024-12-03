@@ -1,4 +1,5 @@
-1. 관리자는 직원의 자격증 정보를 등록할 수 있다.
+1. 자격증
+1.1) 관리자는 직원의 자격증 정보를 등록할 수 있다.
 DELIMITER $$
 CREATE PROCEDURE RegisterQualification (
     IN p_DetailID INT, 
@@ -46,7 +47,7 @@ END $$
 DELIMITER ;
 
 
-2.관리자는 직원의 자격증 정보를 수정할 수 있다.
+1.2) 관리자는 직원의 자격증 정보를 수정할 수 있다.
 DELIMITER $$
 CREATE PROCEDURE UpdateQualification (
     IN p_QualificationID INT,
@@ -103,7 +104,7 @@ BEGIN
 END $$
 DELIMITER ;
 
-3. 직원은 자신의 자격증 정보를 조회할 수 있다.
+1.3) 직원은 자신의 자격증 정보를 조회할 수 있다.
 DELIMITER $$
 CREATE PROCEDURE GetEmployeeQualifications (
     IN p_DetailID INT
@@ -147,3 +148,131 @@ BEGIN
 END $$
 DELIMITER ;
 
+2.렌트
+2.1 관리자는 회사 자산을 특정 직원에게 대여할 수 있다.
+DELIMITER $$
+
+CREATE PROCEDURE AddRent (
+    IN p_EmployeeID INT,
+    IN p_AssetName VARCHAR(255),
+    IN p_Quantity INT,
+    IN p_RentStartDate DATE,
+    IN p_RentEndDate VARCHAR(255),
+    IN p_AssetStatus ENUM('정상', '손상')
+)
+BEGIN
+    DECLARE v_RentEndDate DATE;
+    SET v_RentEndDate = CASE
+		WHEN p_RentEndDate IS NULL or p_RentEndDate = '' THEN NULL
+        ELSE STR_TO_DATE(p_RentEndDate, '%Y-%m-%d')
+    END;
+    
+    INSERT INTO Rents (EmployeeID, AssetName, Quantity, RentStartDate, RentEndDate, AssetStatus)
+    VALUES (p_EmployeeID, p_AssetName, p_Quantity, p_RentStartDate, v_RentEndDate, p_AssetStatus);
+    
+    SELECT LAST_INSERT_ID() AS NewRent, '성공적으로 기록 되었습니다.' as RESULTMESSAGE;
+END$$
+
+DELIMITER ;
+
+2.2 관리자는 자산의 대여 상태를 변경할 수 있다.
+
+DELIMITER //
+
+CREATE PROCEDURE UpdateRentStatus(
+    IN p_RentID INT,
+    IN p_employeeID INT,
+    IN p_AssetName VARCHAR(255),
+    IN p_Quantity INT,
+    IN p_RentStartDate DATE,
+    IN P_RentEndDate VARCHAR(255),
+    IN p_AssetStatus ENUM('정상', '손상')
+    
+)
+BEGIN
+	DECLARE v_RentEndDate DATE;
+    SET v_RentEndDate = CASE
+		WHEN p_RentEndDate IS NULL OR p_RentEndDate = '' THEN NULL
+        ELSE STR_TO_DATE(p_RentEndDate, '%Y-%m-%d')
+	End;
+    
+    IF NOT EXISTS(
+    SELECT 1
+    FROM RENTS
+    WHERE RentID=p_RentID)
+    THEN SIGNAL SQLSTATE '45000'
+    SET MESSAGE_TEXT = '해당 대여 정보를 찾을 수 없습니다.';
+    END IF;
+    
+    IF EXISTS(
+    SELECT 1
+    FROM Rents
+    WHERE EmployeeID=p_EmployeeID
+    AND AssetName = p_AssetName
+    AND Quantity = p_Quantity
+    AND RentStartDate = p_RentStartDate
+    AND RentEndDate = v_RentEndDate
+    AND AssetStatus = p_AssetStatus)
+    THEN 
+    SIGNAL SQLSTATE '45000'
+    SET MESSAGE_TEXT = '동일 기록이 이미 존재합니다.';
+    END IF;
+    
+    UPDATE Rents
+    SET EmployeeID=p_EmployeeID,
+    AssetName = p_AssetName,
+    Quantity = p_Quantity,
+    RentStartDate = p_RentStartDate,
+    RentEndDate = v_RentEndDate,
+    AssetStatus = p_AssetStatus
+    WHERE RentID = p_RentID;
+    
+END;
+//
+
+DELIMITER ;
+
+
+2.3 직원은 자신이 대여한 자산 내역을 조회 할 수 있다.
+
+DELIMITER $$
+CREATE PROCEDURE GETRents(
+	IN p_EmployeeID INT
+    )
+BEGIN
+	IF NOT EXISTS(
+    SELECT 1
+    FROM Rents
+    WHERE EmployeeID = p_EmployeeID
+    ) THEN
+    SIGNAL SQLSTATE '45000'
+    SET MESSAGE_TEXT = '해당 직원 정보를 찾을 수 없습니다.';
+END IF;
+
+SELECT 
+	EmployeeID,
+    AssetName,
+    Quantity,
+    RentStartDate,
+    AssetStatus,
+    CASE
+		WHEN RentEndDate IS NULL THEN '미납'
+        ELSE '반납완료'
+	END as RentStatus
+    FROM Rents
+    WHERE EmployeeID = p_EmployeeID
+    ORDER BY RentID ASC;
+    
+    SELECT COUNT(EmployeeID = (
+    Select * from Rents
+    WHERE Employee = p_EmployeeID)) AS TotalRents, Rents.*
+    FROM Rents
+    WHERE EmployeeID = p_EmployeeID;
+END$$
+DELIMITER ;
+
+3. 통계 및 보고서
+3.1 관리자는 부서별 인원 현황과 근태 데이터를 요약 조회 할 수 있다.
+
+
+3.2 관리자는 직원별 근태, 급여, 보너스 등 데이터를 요약 조회 할 수 있다.
