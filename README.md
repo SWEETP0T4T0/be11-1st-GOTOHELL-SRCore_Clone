@@ -365,7 +365,7 @@ CREATE TABLE EmployeeEducation (
 
 
 <details>
-<summary><b>15. 변경내용</b></summary>
+<summary><b>15. 변경내역</b></summary>
 <div markdown="1">   
 
 ```sql
