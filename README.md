@@ -77,7 +77,7 @@
 ---
 # 📄 WBS
 
-![image](https://github.com/beyond-sw-camp/be07_1st_1team_Moosic/assets/64718002/13d9cc44-a333-4c04-a601-53c6146c2c6b)
+![image](https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/WBS.png)
 
 ---
 # 📄 요구사항 정의서
@@ -102,7 +102,7 @@
 # 📑 Schema
 HRCore는 총 15개의 테이블로 구성되어 있습니다.
   
-자세한 내용은 [여기](https://github.com/beyond-sw-camp/be07_1st_1team_Moosic/blob/main/schema/team1_moosic_schema.sql)에서 보실 수 있습니다.
+자세한 내용은 [여기](https://github.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/blob/main/SQL/DDL.sql)에서 보실 수 있습니다.
 
 
 <details>
