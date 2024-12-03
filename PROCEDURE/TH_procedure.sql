@@ -157,6 +157,15 @@ BEGIN
         ELSE STR_TO_DATE(p_RentEndDate, '%Y-%m-%d')
     END;
     
+    IF NOT EXISTS (
+        SELECT 1
+        FROM Employees
+        WHERE EmployeeID = p_EmployeeID
+    ) THEN
+    SIGNAL SQLSTATE '45000'
+    SET MESSAGE_TEXT = '해당 직원 정보를 찾을 수 없습니다';
+    END IF;
+    
     INSERT INTO Rents (EmployeeID, AssetName, Quantity, RentStartDate, RentEndDate, AssetStatus)
     VALUES (p_EmployeeID, p_AssetName, p_Quantity, p_RentStartDate, v_RentEndDate, p_AssetStatus);
     
