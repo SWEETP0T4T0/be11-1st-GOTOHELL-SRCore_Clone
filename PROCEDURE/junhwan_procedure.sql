@@ -115,6 +115,16 @@ begin
 end
 // DELIMITER ; 
 
+-- 파견 이력 등록
+DELIMITER //
+CREATE PROCEDURE 파견이력등록(in inemployeeid int(11), in inDispatchStartDate date, in inDispatchEndDate date,
+ in inDispatchRole varchar(255), in inSalary decimal(10,2))
+begin
+	INSERT INTO DispatchDetails (EmployeeID, DispatchStartDate, DispatchEndDate,DispatchRole, Salary)
+VALUES (inemployeeid, inDispatchStartDate, inDispatchEndDate, inDispatchRole, inSalary);
+end;
+//
+DELIMITER ;
 
 -- 파견 이력 조회
 DELIMITER //
