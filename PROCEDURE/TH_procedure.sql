@@ -81,7 +81,6 @@ BEGIN
         WHERE DetailID = p_DetailID 
         AND QualificationName = p_QualificationName 
         AND IssueDate = p_IssueDate
-        AND QualificationID != p_QualificationID
     ) THEN
         SIGNAL SQLSTATE '45000' 
         SET MESSAGE_TEXT = '동일한 자격증이 이미 존재합니다.';
@@ -253,15 +252,5 @@ SELECT
     FROM Rents
     WHERE EmployeeID = p_EmployeeID
     ORDER BY RentID ASC;
-    
-    SELECT Rents.*
-    FROM Rents
-    WHERE EmployeeID = p_EmployeeID;
 END$$
 DELIMITER ;
-
-3. 통계 및 보고서
-3.1 관리자는 부서별 인원 현황과 근태 데이터를 요약 조회 할 수 있다.
- 
-
-3.2 관리자는 직원별 근태, 급여, 보너스 등 데이터를 요약 조회 할 수 있다.
