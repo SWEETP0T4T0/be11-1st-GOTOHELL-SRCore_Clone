@@ -8,7 +8,6 @@ CREATE PROCEDURE RegisterQualification (
     IN p_ExpiryDate VARCHAR(255) 
 )
 BEGIN
-    -- 'NULL' 문자열을 실제 NULL로 변환
     DECLARE v_ExpiryDate DATE;
     SET v_ExpiryDate = CASE 
         WHEN p_ExpiryDate = 'NULL' OR p_ExpiryDate = '' THEN NULL 
@@ -18,12 +17,12 @@ BEGIN
     IF NOT EXISTS(
         SELECT 1
         FROM Employees
-        WHERE EmployeeID = DetailID
+        WHERE EmployeeID = p_DetailID
     ) THEN
         SIGNAL SQLSTATE '45000' 
         SET MESSAGE_TEXT = '해당 직원 정보를 찾을 수 없습니다.';
     END IF;
-    
+
     IF EXISTS (
         SELECT 1 
         FROM Qualifications 
@@ -35,7 +34,6 @@ BEGIN
         SET MESSAGE_TEXT = '동일한 자격증이 이미 존재합니다.';
     END IF;
 
-    -- 자격증 추가
     INSERT INTO Qualifications (
         DetailID, 
         QualificationName, 
@@ -48,7 +46,6 @@ BEGIN
         v_ExpiryDate
     );
 
-    -- 추가된 자격증 ID 반환
     SELECT LAST_INSERT_ID() AS NewQualificationID, 
            '자격증이 성공적으로 추가되었습니다.' AS ResultMessage;
 END $$
@@ -65,14 +62,12 @@ CREATE PROCEDURE UpdateQualification (
     IN p_ExpiryDate VARCHAR(255)
 )
 BEGIN
-    -- 'NULL' 문자열을 실제 NULL로 변환
     DECLARE v_ExpiryDate DATE;
     SET v_ExpiryDate = CASE 
         WHEN p_ExpiryDate = 'NULL' OR p_ExpiryDate = '' THEN NULL 
         ELSE STR_TO_DATE(p_ExpiryDate, '%Y-%m-%d')
     END;
 
-    -- 해당 QualificationID 존재 여부 확인
     IF NOT EXISTS (
         SELECT 1 
         FROM Qualifications 
@@ -82,7 +77,6 @@ BEGIN
         SET MESSAGE_TEXT = '해당 자격증 정보를 찾을 수 없습니다.';
     END IF;
 
-    -- 중복 자격증 체크 (동일 직원, 동일 자격증명, 동일 발급일)
     IF EXISTS (
         SELECT 1 
         FROM Qualifications 
@@ -94,7 +88,6 @@ BEGIN
         SET MESSAGE_TEXT = '동일한 자격증이 이미 존재합니다.';
     END IF;
 
-    -- 자격증 정보 업데이트
     UPDATE Qualifications
     SET 
         DetailID = p_DetailID,
@@ -104,7 +97,6 @@ BEGIN
     WHERE 
         QualificationID = p_QualificationID;
 
-    -- 업데이트 결과 반환
     SELECT 
         p_QualificationID AS UpdatedQualificationID, 
         '자격증 정보가 성공적으로 수정되었습니다.' AS ResultMessage;
