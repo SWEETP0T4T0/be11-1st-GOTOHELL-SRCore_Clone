@@ -512,12 +512,10 @@ end
 
 </div>
 </details>
-
- 
 <details>
 <summary><b>부서등록</b></summary>
 <div markdown="2">
-<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/부서관리/부서등록.PNG">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/부서관리/부서등록.png">
 
 
 ```sql
@@ -536,8 +534,7 @@ DELIMITER ;
 <details>
 <summary><b>부서수정</b></summary>
 <div markdown="2">
-<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/부서관리/부서수정.PNG">
-
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/부서관리/부서수정.png">
 
 ```sql
 DELIMITER //
@@ -556,7 +553,7 @@ DELIMITER ;
 <details>
 <summary><b>부서인원조회</b></summary>
 <div markdown="1">
-<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/부서관리/부서인원조회.PNG">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/부서관리/부서인원조회.png">
 
 
 ```sql
