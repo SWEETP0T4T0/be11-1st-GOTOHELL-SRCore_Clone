@@ -1274,9 +1274,14 @@ end
 <summary><b>자산 대여</b></summary>
 <div markdown="1">
 관리자는 회사 자산을 특정 직원에게 대여할 수 있다.
+<div>
+성공사례
 <img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/자산관리/자산관리_등록_성공.png">
+</div>
+<div>
+실패사례
 <img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/자산관리/자산관리_등록_실패1.png">
-	
+</div>
 
 ```sql
 
@@ -1324,9 +1329,14 @@ DELIMITER ;
 <div markdown="1">
 관리자는 자산의 대여 상태를 변경할 수 있다.
 <div>
-<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/자산관리/자산관리_수정_성공.png"></div>
-<div><img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/자산관리/자산관리_수정_실패1.png"> </div>
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/자산관리/자산관리_수정_성공.png">
+</div>
 <div>
+실패사례
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/자산관리/자산관리_수정_실패1.png"> 
+</div>
+<div>
+실패사례
 <img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/자산관리/자산관리_수정_실패2.png">
 </div>
 
