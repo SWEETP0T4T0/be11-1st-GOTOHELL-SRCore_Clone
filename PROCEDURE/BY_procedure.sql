@@ -110,13 +110,12 @@ CREATE PROCEDURE InsertHoliday(
     IN emp_id INT,
     IN holiday_type VARCHAR(255),
     IN start_date DATE,
-    IN end_date DATE,
-    IN remaining_days INT,
-    IN approval_status ENUM('승인', '대기')
+    IN end_date DATE
 )
 BEGIN
-    INSERT INTO Holidays (EmployeeID, HolidayType, StartDate, EndDate, RemainingDays, ApprovalStatus)
-    VALUES (emp_id, holiday_type, start_date, end_date, remaining_days, approval_status);
+	declare remain_hol int default (select remainingdays from holidays where employeeid=emp_id);
+    INSERT INTO Holidays (EmployeeID, HolidayType, StartDate, EndDate, RemainingDays)
+    VALUES (emp_id, holiday_type, start_date, end_date, remain_hol);
 END;
 //
 DELIMITER ;
