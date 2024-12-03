@@ -403,7 +403,7 @@ ALTER TABLE `Departments` AUTO_INCREMENT = 101;
 <details>
 <summary><b>직원정보등록</b></summary>
 <div markdown="1">
-<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/직원정보등록_캡처.PNG">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/직원정보관리/직원정보등록_캡처.PNG">
 
 ```sql
 DELIMITER //
