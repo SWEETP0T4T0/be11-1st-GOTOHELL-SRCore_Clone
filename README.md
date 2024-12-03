@@ -748,6 +748,174 @@ DELIMITER ;
 
 
 <details>
+<summary><b>자격증 등록</b></summary>
+<div markdown="1">
+
+```sql
+
+DELIMITER $$
+CREATE PROCEDURE RegisterQualification (
+    IN p_DetailID INT, 
+    IN p_QualificationName VARCHAR(255), 
+    IN p_IssueDate DATE, 
+    IN p_ExpiryDate VARCHAR(255) 
+)
+BEGIN
+    DECLARE v_ExpiryDate DATE;
+    SET v_ExpiryDate = CASE 
+        WHEN p_ExpiryDate = 'NULL' OR p_ExpiryDate = '' THEN NULL 
+        ELSE STR_TO_DATE(p_ExpiryDate, '%Y-%m-%d')
+    END;
+
+    IF NOT EXISTS(
+        SELECT 1
+        FROM Employees
+        WHERE EmployeeID = p_DetailID
+    ) THEN
+        SIGNAL SQLSTATE '45000' 
+        SET MESSAGE_TEXT = '해당 직원 정보를 찾을 수 없습니다.';
+    END IF;
+
+    IF EXISTS (
+        SELECT 1 
+        FROM Qualifications 
+        WHERE DetailID = p_DetailID 
+        AND QualificationName = p_QualificationName 
+        AND IssueDate = p_IssueDate
+    ) THEN
+        SIGNAL SQLSTATE '45000' 
+        SET MESSAGE_TEXT = '동일한 자격증이 이미 존재합니다.';
+    END IF;
+
+    INSERT INTO Qualifications (
+        DetailID, 
+        QualificationName, 
+        IssueDate, 
+        ExpiryDate
+    ) VALUES (
+        p_DetailID, 
+        p_QualificationName, 
+        p_IssueDate, 
+        v_ExpiryDate
+    );
+
+    SELECT LAST_INSERT_ID() AS NewQualificationID, 
+           '자격증이 성공적으로 추가되었습니다.' AS ResultMessage;
+END $$
+DELIMITER ;
+```
+
+</div>
+</details>
+
+
+<details>
+<summary><b>자격증 수정</b></summary>
+<div markdown="1">
+
+```sql
+
+DELIMITER $$
+CREATE PROCEDURE UpdateQualification (
+    IN p_QualificationID INT,
+    IN p_DetailID INT, 
+    IN p_QualificationName VARCHAR(255), 
+    IN p_IssueDate DATE, 
+    IN p_ExpiryDate VARCHAR(255)
+)
+BEGIN
+    DECLARE v_ExpiryDate DATE;
+    SET v_ExpiryDate = CASE 
+        WHEN p_ExpiryDate = 'NULL' OR p_ExpiryDate = '' THEN NULL 
+        ELSE STR_TO_DATE(p_ExpiryDate, '%Y-%m-%d')
+    END;
+
+    IF NOT EXISTS (
+        SELECT 1 
+        FROM Qualifications 
+        WHERE QualificationID = p_QualificationID
+    ) THEN
+        SIGNAL SQLSTATE '45000' 
+        SET MESSAGE_TEXT = '해당 자격증 정보를 찾을 수 없습니다.';
+    END IF;
+
+    IF EXISTS (
+        SELECT 1 
+        FROM Qualifications 
+        WHERE DetailID = p_DetailID 
+        AND QualificationName = p_QualificationName 
+        AND IssueDate = p_IssueDate
+    ) THEN
+        SIGNAL SQLSTATE '45000' 
+        SET MESSAGE_TEXT = '동일한 자격증이 이미 존재합니다.';
+    END IF;
+
+    UPDATE Qualifications
+    SET 
+        DetailID = p_DetailID,
+        QualificationName = p_QualificationName,
+        IssueDate = p_IssueDate,
+        ExpiryDate = v_ExpiryDate
+    WHERE 
+        QualificationID = p_QualificationID;
+
+    SELECT 
+        p_QualificationID AS UpdatedQualificationID, 
+        '자격증 정보가 성공적으로 수정되었습니다.' AS ResultMessage;
+END $$
+DELIMITER ;
+```
+
+</div>
+</details>
+
+
+<details>
+<summary><b>자격증 조회</b></summary>
+<div markdown="1">
+
+```sql
+1.3) 직원은 자신의 자격증 정보를 조회할 수 있다.
+DELIMITER $$
+CREATE PROCEDURE GetEmployeeQualifications (
+    IN p_DetailID INT
+)
+BEGIN
+    IF NOT EXISTS (
+        SELECT 1 
+        FROM EmployeeDetails 
+        WHERE DetailID = p_DetailID
+    ) THEN
+        SIGNAL SQLSTATE '45000' 
+        SET MESSAGE_TEXT = '해당 직원 정보를 찾을 수 없습니다.';
+    END IF;
+
+    SELECT 
+        QualificationID,
+        QualificationName,
+        IssueDate,
+        CASE 
+            WHEN ExpiryDate IS NULL THEN '영구'
+            WHEN ExpiryDate < CURRENT_DATE THEN '만료'
+            ELSE '유효'
+        END AS QualificationStatus,
+        ExpiryDate
+    FROM 
+        Qualifications
+    WHERE 
+        DetailID = p_DetailID
+    ORDER BY 
+        IssueDate DESC;
+
+END $$
+DELIMITER ;
+```
+
+</div>
+</details>
+
+
+<details>
 <summary><b>프로젝트 등록</b></summary>
 <div markdown="1">
 	
