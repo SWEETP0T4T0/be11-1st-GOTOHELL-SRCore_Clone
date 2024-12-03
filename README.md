@@ -1210,6 +1210,10 @@ end
 // DELIMITER ;
 ```
 
+</div>
+</details>
+
+
 <details>
 <summary><b>교육과정수정</b></summary>
 <div markdown="1">
