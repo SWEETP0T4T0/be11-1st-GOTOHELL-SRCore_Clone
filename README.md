@@ -200,7 +200,6 @@ CREATE TABLE Qualifications (
 <details>
 <summary><b>6. 파견이력</b></summary>
 <div markdown="1">   
-<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/파견이력등록.PNG">
 
 ```sql
 CREATE TABLE DispatchDetails (
@@ -518,6 +517,8 @@ end
 <details>
 <summary><b>부서등록</b></summary>
 <div markdown="2">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/부서관리/부서등록.PNG">
+
 
 ```sql
 DELIMITER //
@@ -535,6 +536,8 @@ DELIMITER ;
 <details>
 <summary><b>부서수정</b></summary>
 <div markdown="2">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/부서관리/부서수정.PNG">
+
 
 ```sql
 DELIMITER //
@@ -553,6 +556,8 @@ DELIMITER ;
 <details>
 <summary><b>부서인원조회</b></summary>
 <div markdown="1">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/부서관리/부서인원조회.PNG">
+
 
 ```sql
 DELIMITER //
@@ -574,6 +579,7 @@ DELIMITER ;
 <details>
 <summary><b>직책등록</b></summary>
 <div markdown="1">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/직책관리/직책등록.PNG">
 
 ```sql
 DELIMITER //
@@ -592,6 +598,7 @@ DELIMITER ;
 <details>
 <summary><b>직책수정</b></summary>
 <div markdown="1">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/직책관리/근태조회.PNG">
 
 ```sql
 DELIMITER //
@@ -706,6 +713,7 @@ DELIMITER ;
 <details>
 <summary><b>보너스지급</b></summary>
 <div markdown="1">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/보너스관리/보너스지급.PNG">
 	
 관리자는 직원에게 보너스를 지급할 수 있다.
 
@@ -728,7 +736,9 @@ DELIMITER ;
 <details>
 <summary><b>보너스 지급내역 조회</b></summary>
 <div markdown="1">
-	
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/보너스관리/보너스지급내역조회.PNG">
+
+
 관리자는 보너스 지급 내역을 조회할 수 있다.
 
 ```sql
@@ -750,6 +760,7 @@ DELIMITER ;
 <details>
 <summary><b>프로젝트 등록</b></summary>
 <div markdown="1">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/프로젝트관리/프로젝트등록.PNG">
 	
 관리자는 프로젝트를 등록할 수 있다.
 
@@ -779,6 +790,7 @@ DELIMITER ;
 <details>
 <summary><b>프로젝트 수정</b></summary>
 <div markdown="1">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/프로젝트관리/프로젝트수정.PNG">
 	
 관리자는 프로젝트 정보를 수정할 수 있다.
 
@@ -804,6 +816,7 @@ DELIMITER ;
 <details>
 <summary><b>프로젝트 참여직원 조회</b></summary>
 <div markdown="1">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/프로젝트관리/프로젝트참여직원조회.PNG">
 	
  관리자는 프로젝트에 참여 중인 직원 목록을 조회할 수 있다.
  
@@ -828,6 +841,7 @@ DELIMITER ;
 <details>
 <summary><b>참여중인 프로젝트 목록조회</b></summary>
 <div markdown="1">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/프로젝트관리/참여중인프로젝트목록조회.PNG">
 	
 직원은 자신이 참여 중인 프로젝트 목록을 조회할 수 있다.
 
@@ -852,6 +866,8 @@ DELIMITER ;
 <details>
 <summary><b>인사평가등록</b></summary>
 <div markdown="1">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/인사평가/인사평가등록.PNG">
+
 
 ```sql
 DELIMITER //
@@ -871,6 +887,8 @@ DELIMITER ;
 <details>
 <summary><b>인사평가수정</b></summary>
 <div markdown="1">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/인사평가/인사평가수정.PNG">
+
 
 ```sql
 DELIMITER //
@@ -891,6 +909,7 @@ DELIMITER ;
 <details>
 <summary><b>인사평가조회</b></summary>
 <div markdown="1">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/인사평가/인사평가조회.PNG">
 
 ```sql
 DELIMITER //
