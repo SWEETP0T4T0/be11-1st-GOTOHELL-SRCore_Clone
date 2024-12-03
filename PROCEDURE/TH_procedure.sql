@@ -156,7 +156,6 @@ BEGIN
 		WHEN p_RentEndDate IS NULL or p_RentEndDate = '' THEN NULL
         ELSE STR_TO_DATE(p_RentEndDate, '%Y-%m-%d')
     END;
-    
     IF NOT EXISTS (
         SELECT 1
         FROM Employees
@@ -225,6 +224,9 @@ BEGIN
     RentEndDate = v_RentEndDate,
     AssetStatus = p_AssetStatus
     WHERE RentID = p_RentID;
+
+    SELECT p_EmployeeID as EmployeeID, p_AssetName as AssetName, p_Quantity as Quantity, p_RentStartDate as RentStartDate,
+           p_RentEndDate as RentEndDate, p_AssetStatus as AssetStatus, '성공적으로 수정 되었습니다' as ResultMessage
     
 END;
 //
