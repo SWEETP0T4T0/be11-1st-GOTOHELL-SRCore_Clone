@@ -220,7 +220,7 @@ CREATE TABLE DispatchDetails (
 <details>
 <summary><b>7. 근태기록</b></summary>
 <div markdown="1">   
-<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/근태기록.PNG">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/근태관리/근태기록.PNG">
 
 ```sql
 CREATE TABLE Attendance (
@@ -423,7 +423,7 @@ end
 <details>
 <summary><b>직원정보수정</b></summary>
 <div markdown="1">
-<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/직원정보수정_캡처.PNG">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/직원정보관리/직원정보수정_캡처.PNG">
 
 ```sql
 DELIMITER //
@@ -443,8 +443,8 @@ end
 <details>
 <summary><b>직원정보삭제</b></summary>
 <div markdown="1">
-<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/직원정보삭제(1)_캡처.PNG">
-<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/직원정보삭제(2)_캡처.PNG">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/직원정보관리/직원정보삭제(1)_캡처.PNG">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/직원정보관리/직원정보삭제(2)_캡처.PNG">
 
 ```sql
 DELIMITER //
@@ -462,7 +462,7 @@ end
 <details>
 <summary><b>직원상세정보조회</b></summary>
 <div markdown="1">
-<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/직원상세정보조회_캡처.PNG">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/직원정보관리/직원상세정보조회_캡처.PNG">
 
 ```sql
 DELIMITER //
@@ -482,7 +482,7 @@ end
 <details>
 <summary><b>퇴사자정보등록</b></summary>
 <div markdown="1">
-<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/퇴사자정보등록.PNG">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/직원정보관리/퇴사자정보등록.PNG">
 
 ```sql
 DELIMITER //
@@ -500,7 +500,7 @@ end
 <details>
 <summary><b>입퇴사자현황조회</b></summary>
 <div markdown="1">
-<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/입퇴사자현황조회_캡처.PNG">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/직원정보관리/입퇴사자현황조회_캡처.PNG">
 
 ```sql
 DELIMITER //
@@ -629,7 +629,7 @@ end
 <details>
 <summary><b>근태조회</b></summary>
 <div markdown="1">
-<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/근태조회.PNG">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/근태관리/근태조회.PNG">
 
 ```sql
 DELIMITER //
@@ -647,6 +647,7 @@ end
 <details>
 <summary><b>급여등록</b></summary>
 <div markdown="1">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/급여관리/급여등록.PNG">
 
 ```sql
 DELIMITER //
@@ -666,6 +667,7 @@ DELIMITER ;
 <details>
 <summary><b>급여수정</b></summary>
 <div markdown="1">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/급여관리/급여수정.PNG">
 
 ```sql
 DELIMITER //
@@ -684,6 +686,7 @@ DELIMITER ;
 <details>
 <summary><b>급여조회</b></summary>
 <div markdown="1">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/급여관리/급여조회.PNG">
 
 ```sql
 DELIMITER //
@@ -907,7 +910,7 @@ DELIMITER ;
 <details>
 <summary><b>교육과정등록</b></summary>
 <div markdown="1">
-<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/교육과정등록.PNG">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/교육과정관리/교육과정등록.PNG">
 
 ```sql
 DELIMITER //
@@ -929,7 +932,7 @@ DELIMITER;
 <details>
 <summary><b>교육과정수정</b></summary>
 <div markdown="1">
-<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/교육과정수정.PNG">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/교육과정관리/교육과정수정.PNG">
 
 ```sql
 
@@ -943,9 +946,16 @@ DELIMITER;
 <details>
 <summary><b>교육과정조회</b></summary>
 <div markdown="1">
-<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/교육과정조회.PNG">
+<img width="400" src="https://raw.githubusercontent.com/beyond-sw-camp/be11-1st-GOTOHELL-HRCore/main/img/교육과정관리/교육과정조회.PNG">
 
 ```sql
+
+DELIMITER //
+create procedure 교육과정조회(in inemployeeid int(11))
+begin
+	select * from employeeeducation where inemployeeid=employeeid;
+end
+// DELIMITER ; 
 
 ```
 
